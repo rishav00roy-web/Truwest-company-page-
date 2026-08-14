@@ -107,7 +107,13 @@ export default function Home() {
             <div className="flex flex-col gap-0 border-t border-line">
               <Link href="/self-employed" className="group flex flex-col sm:flex-row sm:items-center justify-between py-12 border-b border-line hover:bg-[#F9F8F6] transition-colors duration-300 px-6 -mx-6">
                 <div className="flex items-start gap-8">
-                  <span className="font-mono text-[13px] text-[var(--bronze-dark-bg)] mt-2">01</span>
+                  <span className="text-[var(--bronze-dark-bg)] mt-1 shrink-0">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="7" width="18" height="13" rx="2"/>
+                      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                      <path d="M3 12h18"/>
+                    </svg>
+                  </span>
                   <div className="flex flex-col">
                     <h3 className="font-serif text-4xl !font-medium !text-ink mb-3 group-hover:!text-bronze transition-colors">Self-Employed & Alternative</h3>
                     <p className="font-sans text-base !text-stone">Business owners, bruised credit, bank declines.</p>
@@ -117,7 +123,13 @@ export default function Home() {
               </Link>
               <Link href="/home-buyers-refinance" className="group flex flex-col sm:flex-row sm:items-center justify-between py-12 border-b border-line hover:bg-[#F9F8F6] transition-colors duration-300 px-6 -mx-6">
                 <div className="flex items-start gap-8">
-                  <span className="font-mono text-[13px] text-[var(--bronze-dark-bg)] mt-2">02</span>
+                  <span className="text-[var(--bronze-dark-bg)] mt-1 shrink-0">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 11l9-8 9 8"/>
+                      <path d="M5 10v10h14V10"/>
+                      <path d="M10 20v-6h4v6"/>
+                    </svg>
+                  </span>
                   <div className="flex flex-col">
                     <h3 className="font-serif text-4xl !font-medium !text-ink mb-3 group-hover:!text-bronze transition-colors">Home Buyers & Refinancing</h3>
                     <p className="font-sans text-base !text-stone">First homes, renewals, refinancing, new to Canada.</p>
@@ -127,7 +139,13 @@ export default function Home() {
               </Link>
               <Link href="/commercial-investors" className="group flex flex-col sm:flex-row sm:items-center justify-between py-12 border-b border-line hover:bg-[#F9F8F6] transition-colors duration-300 px-6 -mx-6">
                 <div className="flex items-start gap-8">
-                  <span className="font-mono text-[13px] text-[var(--bronze-dark-bg)] mt-2">03</span>
+                  <span className="text-[var(--bronze-dark-bg)] mt-1 shrink-0">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="4" y="3" width="16" height="18" rx="1"/>
+                      <path d="M9 8h.01M9 12h.01M9 16h.01M15 8h.01M15 12h.01M15 16h.01"/>
+                      <path d="M10 21v-4h4v4"/>
+                    </svg>
+                  </span>
                   <div className="flex flex-col">
                     <h3 className="font-serif text-4xl !font-medium !text-ink mb-3 group-hover:!text-bronze transition-colors">Commercial & Investors</h3>
                     <p className="font-sans text-base !text-stone">Portfolios, multi-family, land and development.</p>
@@ -137,7 +155,14 @@ export default function Home() {
               </Link>
               <Link href="/referral-partners" className="group flex flex-col sm:flex-row sm:items-center justify-between py-12 border-b border-line hover:bg-[#F9F8F6] transition-colors duration-300 px-6 -mx-6">
                 <div className="flex items-start gap-8">
-                  <span className="font-mono text-[13px] text-[var(--bronze-dark-bg)] mt-2">04</span>
+                  <span className="text-[var(--bronze-dark-bg)] mt-1 shrink-0">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="9" cy="8" r="3"/>
+                      <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+                      <circle cx="17" cy="8" r="2.5"/>
+                      <path d="M15 14.2c2.8.4 5 2.9 5 5.8"/>
+                    </svg>
+                  </span>
                   <div className="flex flex-col">
                     <h3 className="font-serif text-4xl !font-medium !text-ink mb-3 group-hover:!text-bronze transition-colors">Realtors & Partners</h3>
                     <p className="font-sans text-base !text-stone">Send a scenario. Keep the deal alive.</p>
