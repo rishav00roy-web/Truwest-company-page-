@@ -2,6 +2,7 @@ import React from 'react';
 import SubPageHero from '@/components/sections/SubPageHero';
 import SplitSection from '@/components/sections/SplitSection';
 import StepCardGrid from '@/components/sections/StepCardGrid';
+import ComparisonGrid from '@/components/sections/ComparisonGrid';
 import FaqSection from '@/components/sections/FaqSection';
 import ReviewWall from '@/components/sections/ReviewWall';
 import ContactSection from '@/components/interactive/ContactSection';
@@ -46,7 +47,7 @@ export default function ReferralPartnersPage() {
         eyebrow="For Realtors"
         title="Save the deal. Keep the client."
         paragraphs={[
-          "A bank decline doesn’t mean the client can’t buy — it just means they don’t fit that specific bank’s box.",
+          "A bank decline doesn’t mean the client can’t buy: it just means they don’t fit that specific bank’s box.",
           "When a subject removal is looming, you need fast, straight answers. We handle the files that need structuring: self-employed, bruised credit, alternative/B-lending, and private bridges."
         ]}
         ctaText="Submit a Scenario"
@@ -62,36 +63,62 @@ export default function ReferralPartnersPage() {
       <section className="bg-white py-[110px]" id="for-advisors">
         <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
           <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">For Financial Planners & Accountants</span>
-          <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[70px]">The lending side of the plan.</h2>
-          <StepCardGrid 
-            columns={3}
-            items={[
-              {
-                badge: 'Respect the Structure',
-                title: 'Corporate complexity',
-                description: 'Your incorporated clients built careful structures—holdcos, dividends, retained earnings. Their financing should respect that work, not unwind it.'
-              },
-              {
-                badge: 'Preserve the Relationship',
-                title: 'You keep the client',
-                description: 'We do not sell wealth management, insurance, or accounting services. We handle the debt structuring and hand the client back. The relationship stays exactly where it belongs: with you.'
-              },
-              {
-                badge: 'Portfolio Growth',
-                title: 'Investor capacity',
-                description: 'When your clients want to acquire more real estate, we map the lender preservation strategy so they don’t hit an arbitrary brick wall on property #4.'
-              }
+          <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[20px]">The lending side of the plan you built.</h2>
+          <p className="font-sans text-[17px] leading-[1.65] text-stone mb-[48px] max-w-[700px]">Your incorporated and self-employed clients built careful structures: holdcos, dividends, retained earnings, tax planning that took years to get right. Financing shouldn’t unwind that work to satisfy one lender’s form.</p>
+          <ComparisonGrid
+            leftTitle="What can go wrong"
+            leftItems={[
+              "A lender insists on higher personal income: triggering unplanned dividends or salary and a tax bill nobody budgeted for.",
+              "Corporate structure treated as an obstacle rather than documented and understood.",
+              "Assets under management liquidated for a down payment when borrowing capacity already existed.",
+              "Your client is handed to an institution that then cross-sells them investment products."
+            ]}
+            rightTitle="How we work with you"
+            rightItems={[
+              "We look for lender programs that read corporate financials, dividends and retained earnings as they are.",
+              "We flag the tax consequences of an income-raising strategy before it’s executed, and refer that decision back to you and their accountant.",
+              "We consider borrowing structures that leave an investment portfolio intact where that’s the better outcome.",
+              "We don’t sell investments, and we don’t compete with you. The client relationship stays where it belongs."
             ]}
           />
         </div>
       </section>
 
-      <ReviewWall 
+      <section className="bg-white py-[110px]" id="commitment">
+        <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
+          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">Our commitment to partners</span>
+          <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[14px]">What you can expect, every time.</h2>
+          <p className="font-sans text-[17px] leading-[1.65] text-stone max-w-[640px] mb-[48px]">A referral puts your reputation on the line as much as ours. These are the standards we hold ourselves to, not aspirations.</p>
+          <StepCardGrid
+            columns={3}
+            items={[
+              {
+                badge: 'Commitment 01',
+                title: 'Fast first response',
+                description: 'Every scenario is acknowledged within one business day. Where we have enough information, that first reply includes our initial read on viability rather than a request to book a call.'
+              },
+              {
+                badge: 'Commitment 02',
+                title: 'A straight answer, including no',
+                description: 'If a file isn’t financeable as presented, we tell you plainly and explain what would need to change. We won’t hold a deal open on optimism while your timeline runs out.'
+              },
+              {
+                badge: 'Commitment 03',
+                title: 'Transparent status through to funding',
+                description: 'You’ll know where the file stands at each stage (submission, approval, conditions and funding) without having to chase for an update.'
+              }
+            ]}
+          />
+          <p className="font-sans text-[12.5px] text-stone max-w-[780px] leading-[1.75] mt-[48px]">Response times reflect our standard practice, and complex or incomplete files may require more information before we can give a meaningful read. Nothing here is a commitment to lend or an assurance of any particular financing outcome, which always depends on lender criteria and the client’s circumstances.</p>
+        </div>
+      </section>
+
+      <ReviewWall
         title="The team behind the deal."
         reviews={[
           {
             quote: "Dilmohan helped us to get second mortgage and refinance from the current property very easily for us. He was always accessible - any day or time - through email, phone-call, or text.",
-            author: "Darshan Patel · Google review",
+            author: "Darshan Patel · May 4, 2021 · Google",
             stars: 5
           }
         ]}
@@ -111,14 +138,26 @@ export default function ReferralPartnersPage() {
           {
             question: "My client was declined because they are self-employed. What are the options?",
             answer: "Many A-lenders rely solely on a 2-year average of T1 net income. We work with alternative lenders who can use business bank statements, gross revenue, or corporate retained earnings to prove the ability to service the debt."
+          },
+          {
+            question: "Does my client stay my client?",
+            answer: "Yes. We arrange the financing and send them back to you. We don’t sell investment products and we don’t compete with advisors for the wealth relationship or with realtors for the next transaction."
+          },
+          {
+            question: "Do you work across BC and Alberta?",
+            answer: "We work with clients across British Columbia and Alberta, from the Surrey office. Meetings happen by phone, video or in person depending on what suits your client."
+          },
+          {
+            question: "What do you need from me to review a scenario?",
+            answer: "File type, the key obstacle, approximate property value and the timeline, that’s usually enough for a first read. Please don’t send your client’s personal or financial documents through the form; we’ll arrange a secure method and obtain their consent before reviewing anything identifiable."
           }
         ]}
         ctaText="Discuss a File with Dil &rarr;"
         ctaHref="#contact"
       />
 
-      <ContactSection>
-        <ScenarioReviewForm formName="partner-scenario" />
+      <ContactSection note="Urgent file? Call the cell directly: a subject removal deadline is a phone call, not a form.">
+        <ScenarioReviewForm formName="partner-scenario" variant="referral-partner" />
       </ContactSection>
     </>
   );

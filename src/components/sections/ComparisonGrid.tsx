@@ -21,7 +21,7 @@ export default function ComparisonGrid({ leftTitle, leftItems, rightTitle, right
         </ul>
       </div>
       <div className="bg-ink py-[50px] px-6 md:px-[48px]">
-        <span className="font-mono text-[11.5px] tracking-[0.2em] uppercase mb-[32px] block text-bronze-dark-bg">{rightTitle}</span>
+        <span className="font-mono text-[11.5px] tracking-[0.2em] uppercase mb-[32px] block text-emerald-dark-bg">{rightTitle}</span>
         <ul className="list-none m-0 p-0">
           {rightItems.map((item, idx) => (
             <li key={idx} className="py-[18px] border-b border-[#2C2C2A] text-[16.5px] leading-[1.5] text-[#EDEBE6] last:border-b-0">

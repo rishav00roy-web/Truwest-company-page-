@@ -14,6 +14,7 @@ export default function Footer() {
               Bespoke mortgage strategy for self-employed borrowers, investors and complex financial situations.
             </p>
             <div className="flex flex-col gap-2">
+              <p className="text-[14px] text-white font-sans tracking-wide">215&ndash;12565 88 Ave, Surrey, BC V3W 3J7</p>
               <p className="text-[14px] text-white font-sans tracking-wide">Call: <a href="tel:+16045930197" className="hover:text-bronze transition-colors duration-300">(604) 593-0197</a></p>
               <p className="text-[14px] text-white font-sans tracking-wide">Email: <a href="mailto:info@truwestmortgage.com" className="hover:text-bronze transition-colors duration-300">info@truwestmortgage.com</a></p>
             </div>
@@ -33,10 +34,13 @@ export default function Footer() {
           <div>
             <span className="block mb-[28px] text-[#6E6A63] font-mono text-[11.5px] tracking-[0.2em] uppercase">Service Areas</span>
             <ul className="flex flex-col gap-[16px] text-[14.5px] font-sans text-[#EDEBE6]">
+              <li><Link href="/mortgage-broker-british-columbia" className="hover:text-bronze transition-colors duration-300">Mortgage Broker British Columbia</Link></li>
               <li><Link href="/mortgage-broker-surrey" className="hover:text-bronze transition-colors duration-300">Surrey</Link></li>
-              <li><Link href="/mortgage-broker-vancouver" className="hover:text-bronze transition-colors duration-300">Vancouver</Link></li>
-              <li><Link href="/mortgage-broker-burnaby" className="hover:text-bronze transition-colors duration-300">Burnaby</Link></li>
-              <li><Link href="/mortgage-broker-langley" className="hover:text-bronze transition-colors duration-300">Langley</Link></li>
+              <li><Link href="/mortgage-broker-vancouver" className="hover:text-bronze transition-colors duration-300">Greater Vancouver</Link></li>
+              <li><Link href="/mortgage-broker-victoria" className="hover:text-bronze transition-colors duration-300">Victoria</Link></li>
+              <li><Link href="/mortgage-broker-alberta" className="hover:text-bronze transition-colors duration-300">Mortgage Broker Alberta</Link></li>
+              <li><Link href="/mortgage-broker-calgary" className="hover:text-bronze transition-colors duration-300">Calgary</Link></li>
+              <li><Link href="/mortgage-broker-edmonton" className="hover:text-bronze transition-colors duration-300">Edmonton</Link></li>
               <li><Link href="/locations" className="text-bronze hover:text-white transition-colors duration-300 mt-2 block tracking-wide">All Locations &rarr;</Link></li>
             </ul>
           </div>
@@ -46,6 +50,8 @@ export default function Footer() {
             <ul className="flex flex-col gap-[16px] text-[14.5px] font-sans text-[#EDEBE6]">
               <li><Link href="/referral-partners" className="hover:text-bronze transition-colors duration-300">Referral Partners</Link></li>
               <li><a href="https://velocity.newton.ca/sso/public.php?sc=136pf7uo80xqk" target="_blank" rel="noopener noreferrer" className="hover:text-bronze transition-colors duration-300">Apply Online</a></li>
+              <li><a href="https://share.google/paWEQpy3IslpiACOP" target="_blank" rel="noopener noreferrer" className="hover:text-bronze transition-colors duration-300">View TruWest on Google</a></li>
+              <li><Link href="#contact" className="hover:text-bronze transition-colors duration-300">Talk to Dil</Link></li>
             </ul>
           </div>
         </div>

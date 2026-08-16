@@ -6,7 +6,10 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Service Areas | TruWest Mortgage Broker',
-  description: 'TruWest Mortgage serves clients across British Columbia and Alberta for residential and commercial financing.'
+  description: 'TruWest Mortgage serves clients across British Columbia and Alberta for residential and commercial financing.',
+  alternates: {
+    canonical: 'https://truwestmortgage.com/locations'
+  }
 };
 
 export default function LocationsPage() {

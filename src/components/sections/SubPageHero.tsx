@@ -13,7 +13,7 @@ interface SubPageHeroProps {
 
 export default function SubPageHero({ breadcrumbs, eyebrow, title, lede, ctaText, ctaHref, dataCta }: SubPageHeroProps) {
   return (
-    <header className="py-[96px] sm:py-[84px] bg-[#FCFCFA] border-b border-[#E8E5DE]">
+    <header className="py-[96px] sm:py-[84px] bg-[#F7F3EA] border-b border-[#E8E5DE]">
       <div className="wrap">
         <nav className="mb-8 font-mono text-[11px] uppercase tracking-[0.14em] text-[#635F57]">
           {breadcrumbs.map((crumb, idx) => (

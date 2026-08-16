@@ -98,17 +98,20 @@ export default function LeadQualificationWizard({ formName, pageSource, defaultG
           </div>
 
           <p className="font-sans text-[12.5px] text-[#6E6A63] leading-[1.6] max-w-[400px]">
-            By submitting this form, you consent to TruWest Mortgage contacting you regarding your inquiry.
-            Do not submit confidential financial documents through this form.
+            By submitting this form, you consent to TruWest Mortgage contacting you regarding your inquiry, including by phone and text message. Do not submit confidential financial documents through this form. Submitting this initial scenario does not impact your credit score.
           </p>
 
           <div className="font-mono text-[10.5px] tracking-[0.08em] text-[#B08A4E] bg-[#242424] border border-[#2C2C2A] p-[12px_16px] flex items-center justify-center gap-2">
-            <span>🔒</span> BCFSA & RECA Compliant &middot; 100% Confidential
+            <span>🔒</span> BCFSA & RECA Compliant &middot; 100% Confidential &middot; Direct response from Dilmohan Aneja
           </div>
 
           <button type="submit" className="inline-flex items-center justify-center min-h-[54px] w-full bg-white text-ink font-sans font-medium text-[16px] tracking-[0.02em] hover:bg-bronze hover:text-white transition-colors duration-300 mt-2">
             Get My Qualification Breakdown &rarr;
           </button>
+
+          <p className="font-mono text-[10.5px] tracking-[0.1em] text-[#6E6A63] uppercase text-center">
+            Private &amp; Confidential &middot; No Obligation
+          </p>
         </div>
       )}
     </form>

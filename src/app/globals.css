@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-white: #FCFCFA;
+  --color-white: #F7F3EA;
   --color-ink: #161616;
   --color-stone: #635F57;
   --color-line: #E8E5DE;
   --color-bronze: #856437;
   --color-bronze-dark-bg: #B08A4E;
   --color-bronze-deep: #7D6238;
+  --color-emerald: #1E4638;
+  --color-emerald-dark-bg: #3D7A63;
 
   --font-sans: var(--font-archivo), system-ui, sans-serif;
   --font-serif: var(--font-cormorant), serif;
@@ -16,7 +18,7 @@
 
 :root {
   color-scheme: only light;
-  --white: #FCFCFA;
+  --white: #F7F3EA;
   --ink: #161616;
   --stone: #635F57;
   --line: #E8E5DE;
@@ -79,5 +81,104 @@
     margin-right: auto;
     padding-left: 24px;
     padding-right: 24px;
+  }
+}
+
+/*
+  Gloss sweep for the hero CTA.
+  Driven by transform rather than an animated background-position so the whole
+  loop runs on the compositor and never repaints the button on the main thread.
+  The band is sized in % of the button, so it adapts to any label width.
+*/
+.shine-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 42%,
+    rgb(255 255 255 / 0.38) 50%,
+    transparent 58%
+  );
+  transform: translate3d(-100%, 0, 0);
+  animation: shine-sweep 4.5s ease-in-out infinite;
+}
+
+@keyframes shine-sweep {
+  0%,
+  55% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+/*
+  Portrait hover reveal: the photo sits on top, an info panel slides out from
+  behind it. Uses translate3d instead of animated margins so no layout/reflow
+  happens per frame. Hover-gated to pointer devices so touch users never get a
+  stuck half-open panel.
+*/
+.reveal-card {
+  position: relative;
+}
+
+.reveal-card__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  /* `translate` (not `transform`) so Tailwind's own transform variables can't
+     neutralise it; it is compositor-accelerated exactly the same way. */
+  translate: 0 0;
+  transition: translate 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.reveal-card__face {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* The portrait's own backdrop is near-cream, so on a #F5F3EE section its top
+     and left edges dissolve. A defined hairline does the actual separating; the
+     neumorphic pair below then lifts it off the page. The white highlight is
+     kept tight and weak on purpose: pushed harder, it washes out the very light
+     edges it is meant to define. Static shadows, so no per-frame paint cost.
+     Blur is capped at the offset (10px) so the highlight's own blur radius can
+     never spill past this element's bottom edge onto the name panel that
+     slides out from underneath it on hover. */
+  border: 1px solid #cbc5b6;
+  box-shadow:
+    15px 15px 30px #c4bfb3,
+    -10px -10px 10px #ffffff;
+}
+
+@media (hover: hover) {
+  .reveal-card:hover .reveal-card__panel,
+  .reveal-card:focus-within .reveal-card__panel {
+    /* Overlap is deliberately generous (not the visual 10px it reads as) so
+       sub-pixel rounding between the panel's own computed height (used by
+       this %-based translate) and the face's layout box can never leave a
+       hairline gap exposing the page background behind them. */
+    translate: 16px calc(100% - 18px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shine-cta::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .reveal-card__panel {
+    transition: none;
+    translate: 0 0;
   }
 }

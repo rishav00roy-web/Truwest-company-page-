@@ -1,7 +1,16 @@
 "use client";
 import React from 'react';
 
-export default function ScenarioReviewForm({ formName }: { formName: string }) {
+interface ScenarioReviewFormProps {
+  formName: string;
+  variant?: 'default' | 'referral-partner';
+}
+
+export default function ScenarioReviewForm({ formName, variant = 'default' }: ScenarioReviewFormProps) {
+  const consentCopy = variant === 'referral-partner'
+    ? "By submitting this form, you consent to TruWest Mortgage contacting you regarding this scenario, including by phone and text message. Please do not submit your client’s confidential financial documents or personal information through this form. We’ll arrange a secure method and obtain their consent before reviewing anything identifiable. Submitting this initial scenario does not impact your credit score."
+    : "By submitting this form, you consent to TruWest Mortgage contacting you regarding your inquiry, including by phone and text message. Do not submit confidential financial documents through this form. Submitting this initial scenario does not impact your credit score.";
+
   return (
     <form id="lead-form" className="w-full flex flex-col gap-6" name={formName} method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value={formName} />
@@ -66,13 +75,21 @@ export default function ScenarioReviewForm({ formName }: { formName: string }) {
         </div>
       </div>
 
+      <p className="font-sans text-[12.5px] text-[#6E6A63] leading-[1.6] max-w-[400px]">
+        {consentCopy}
+      </p>
+
       <div className="font-mono text-[10.5px] tracking-[0.08em] text-[#B08A4E] bg-[#242424] border border-[#2C2C2A] p-[12px_16px] flex items-center justify-center gap-2 mt-4">
-        <span>🔒</span> BCFSA & RECA Compliant &middot; 100% Confidential
+        <span>🔒</span> BCFSA & RECA Compliant &middot; 100% Confidential &middot; Direct response from Dilmohan Aneja
       </div>
 
       <button type="submit" className="inline-flex items-center justify-center min-h-[54px] w-full bg-white text-ink font-sans font-medium text-[16px] tracking-[0.02em] hover:bg-bronze hover:text-white transition-colors duration-300 mt-2">
         Submit This Scenario &rarr;
       </button>
+
+      <p className="font-mono text-[10.5px] tracking-[0.1em] text-[#6E6A63] uppercase text-center">
+        Private &amp; Confidential &middot; No Obligation
+      </p>
     </form>
   );
 }

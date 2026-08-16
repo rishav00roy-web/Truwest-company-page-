@@ -2,11 +2,13 @@ import React from 'react';
 import SubPageHero from '@/components/sections/SubPageHero';
 import SplitSection from '@/components/sections/SplitSection';
 import StepCardGrid from '@/components/sections/StepCardGrid';
+import FlagshipSection from '@/components/sections/FlagshipSection';
+import ComparisonGrid from '@/components/sections/ComparisonGrid';
 import FaqSection from '@/components/sections/FaqSection';
 import ReviewWall from '@/components/sections/ReviewWall';
 import ContactSection from '@/components/interactive/ContactSection';
 import LeadQualificationWizard from '@/components/interactive/LeadQualificationWizard';
-import MortgageCalculators from '@/components/interactive/MortgageCalculators';
+import CalculatorsCta from '@/components/sections/CalculatorsCta';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -43,7 +45,7 @@ export default function HomeBuyersPage() {
         ]}
         eyebrow="Residential mortgages · BC & Alberta"
         title="First-time buyers, renewals and refinancing."
-        lede="Your first mortgage shouldn't feel like a test you didn't study for. We start with what you can actually afford—then you shop with numbers you trust."
+        lede="Your first mortgage shouldn't feel like a test you didn't study for. We start with what you can actually afford; then you shop with numbers you trust."
         ctaText="Find Out What You Qualify For &rarr;"
         ctaHref="#contact"
         dataCta="talk-to-dil"
@@ -62,30 +64,102 @@ export default function HomeBuyersPage() {
         tickItems={[
           "True affordability and stress-test limits",
           "Down payment strategies (FHSA, RRSP, Gifted)",
-          "Budgeting for BC Property Transfer Tax and closing costs",
+          "Budgeting for Property Transfer Tax and closing costs",
           "Credit review and improvement strategies"
         ]}
+        note="This overview is general information, not tax or financial advice. Program rules, limits and eligibility are set by government and lenders and change over time; confirm current details for your own situation."
+      />
+
+      <section className="bg-white py-[110px]" id="down-payment-sources">
+        <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
+          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">First-time buyers</span>
+          <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[70px]">Your down payment has more sources than you think.</h2>
+          <StepCardGrid
+            columns={4}
+            items={[
+              {
+                badge: 'Source 01',
+                title: 'First Home Savings Account (FHSA)',
+                description: 'A registered account designed for first-home savings, with contribution and lifetime limits set by the federal government. Eligibility and limits apply: worth confirming with your accountant or financial planner alongside your mortgage plan.'
+              },
+              {
+                badge: 'Source 02',
+                title: 'RRSP Home Buyers’ Plan',
+                description: 'Allows eligible first-time buyers to withdraw from an RRSP toward a home purchase, repaid over a set schedule. Withdrawal limits, holding periods and repayment terms are set by CRA and change from time to time.'
+              },
+              {
+                badge: 'Source 03',
+                title: 'Gifted down payments',
+                description: 'Many lenders accept gifted funds from an immediate family member, supported by a signed gift letter and evidence the funds are a gift rather than a loan. Requirements vary by lender: we’ll tell you exactly what yours needs.'
+              },
+              {
+                badge: 'Source 04',
+                title: 'BC property transfer tax exemptions',
+                description: 'First-time buyer and newly built home exemptions may reduce or eliminate BC property transfer tax on qualifying purchases. Thresholds and eligibility rules change; confirm your situation before you budget for closing.'
+              }
+            ]}
+          />
+        </div>
+      </section>
+
+      <FlagshipSection
+        id="refinance"
+        eyebrow="Equity refinance & debt consolidation"
+        title="Equity is only useful if the plan behind it is sound."
+        intro="Rolling high-interest debt into a mortgage can lower a monthly payment, but it also moves unsecured debt onto your home and can extend how long you pay for it. That trade-off deserves a straight conversation, not a sales pitch."
+        ctaText="Review My Refinance Options &rarr;"
+        ctaHref="#contact"
+      >
+        <ComparisonGrid
+          leftTitle="What people usually ask"
+          leftItems={[
+            "“Can I lower my monthly payment?”",
+            "“Can I pull out equity for a renovation?”",
+            "“Should I consolidate my cards and line of credit?”",
+            "“What will it cost me to break my current term?”"
+          ]}
+          rightTitle="What we work through with you"
+          rightItems={[
+            "The full cost over the remaining amortization, not just the new monthly figure.",
+            "Prepayment penalties, appraisal, legal and discharge costs, quantified before you decide.",
+            "Whether a refinance, a HELOC or a second mortgage actually fits the goal.",
+            "What happens to the debt you consolidate, and the plan to keep it from returning.",
+            "Whether doing nothing is the better answer this year."
+          ]}
+        />
+      </FlagshipSection>
+
+      <SplitSection
+        id="renewals"
+        eyebrow="Mortgage renewals"
+        title="Your bank’s renewal letter is their best offer, for them."
+        paragraphs={[
+          "Renewal is the one moment your mortgage is fully portable, and the one moment most people do nothing. Signing the letter that arrives in the mail is the easiest thing to do, and it is rarely the most competitive option available to you.",
+          "A renewal handled properly is a negotiation: your current lender competes against every other lender we can place your file with. Sometimes your existing lender wins, and it wins on better terms than the letter offered.",
+          "Start the conversation about four months before your maturity date. That’s enough runway to secure a rate hold, weigh the switch costs, and avoid being rushed into a decision by a deadline."
+        ]}
+        ctaText="Review My Renewal"
+        ctaHref="#contact"
+        tickItems={[
+          "What your current lender is actually offering versus the wider market",
+          "Switch costs (discharge, legal and appraisal) weighed against any benefit",
+          "Fixed versus variable, and the term length that suits your plans",
+          "Prepayment privileges, portability and penalty calculations in the fine print",
+          "Whether to consolidate debt or access equity at the same time",
+          "Rate holds so a rising market doesn’t decide for you"
+        ]}
+        note="Whether a switch or an early renewal makes sense depends on your lender, term, penalty structure and circumstances. Results vary and no particular outcome or saving is implied."
       />
 
       <section className="bg-white py-[110px]" id="scenarios">
         <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
           <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">Other residential files</span>
           <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[70px]">Beyond the first home.</h2>
-          <StepCardGrid 
+          <StepCardGrid
             columns={3}
             items={[
               {
                 badge: 'Scenario 01',
-                title: 'Renewals & Transfers',
-                description: 'Your bank’s renewal letter is their best offer for them. We make lenders compete for your maturity date to ensure you get the right rate and terms for the next five years.'
-              },
-              {
-                badge: 'Scenario 02',
-                title: 'Refinancing & Equity',
-                description: 'Access the equity in your home for renovations, debt consolidation, or investing. We run the penalty calculations to see if breaking your current term makes mathematical sense.'
-              },
-              {
-                badge: 'Scenario 03',
                 title: 'New to Canada',
                 description: 'Thin Canadian credit and foreign income shouldn’t lock you out of the market. We work with lenders who run specific newcomer programs and know how to package the file.'
               }
@@ -94,19 +168,19 @@ export default function HomeBuyersPage() {
         </div>
       </section>
 
-      <MortgageCalculators hasPtt={true} />
+      <CalculatorsCta />
 
       <ReviewWall 
         title="Homebuyers, in their own words."
         reviews={[
           {
             quote: "As first-time homebuyers, we had many questions, and Dil and Mandeep always took the time to explain everything clearly and made sure we understood all our options. Their professionalism, patience, and dedication made what could have been a stressful experience so much easier.",
-            author: "Jackie Gee · Google review",
+            author: "Jackie Gee · March 2026 · Google",
             stars: 5
           },
           {
             quote: "Dilmohan is one of the most professional and down to earth individual you will find. His hard work speaks volume when it comes to mortgages. He made things possible when others couldn’t. Highly recommended and greatly appreciated for all he does.",
-            author: "Jyoti Nath · Google review",
+            author: "Jyoti Nath · Apr 28, 2021 · Google",
             stars: 5
           }
         ]}
@@ -121,7 +195,7 @@ export default function HomeBuyersPage() {
           },
           {
             question: "What is the mortgage stress test?",
-            answer: "The stress test (OSFI B-20) requires lenders to prove you can afford your mortgage payments if interest rates go up. You must qualify at a rate that is 2% higher than your contract rate, or 5.25% — whichever is higher."
+            answer: "The stress test (OSFI B-20) requires lenders to prove you can afford your mortgage payments if interest rates go up. You must qualify at a rate that is 2% higher than your contract rate, or 5.25%, whichever is higher."
           },
           {
             question: "How does the BC Property Transfer Tax work for first-time buyers?",
@@ -134,6 +208,18 @@ export default function HomeBuyersPage() {
           {
             question: "Can I use gifted money for my down payment?",
             answer: "Yes. Most lenders allow a down payment to be gifted from an immediate family member (parent, grandparent, sibling). You will need a signed gift letter confirming the money does not need to be repaid."
+          },
+          {
+            question: "How much down payment do I need to buy in Metro Vancouver?",
+            answer: "Canadian minimums are tiered: 5% on the first $500,000, 10% on the portion between $500,000 and $1.5M, and 20% at $1.5M and above. Given Surrey and Metro Vancouver prices, many buyers land in the tiered band, which is where the arithmetic surprises people. Run your number through our affordability calculator before you shop."
+          },
+          {
+            question: "Can I combine the FHSA and the RRSP Home Buyers’ Plan?",
+            answer: "Many first-time buyers use both, and gifted funds from immediate family alongside them. Each program has its own eligibility rules, contribution and withdrawal limits, and repayment terms set by government, and those change. Confirm current figures with your accountant; then we’ll build the mortgage around what you actually have."
+          },
+          {
+            question: "Does refinancing to consolidate debt actually make sense?",
+            answer: "Sometimes. It can lower a monthly payment, but it moves unsecured debt onto your home and can stretch how long you pay for it. The honest test is total cost over the remaining amortization, including penalty, appraisal and legal costs, and whether the debt is likely to return. We’ll run that with you before you decide."
           }
         ]}
         ctaText="Start Your Pre-Qualification &rarr;"

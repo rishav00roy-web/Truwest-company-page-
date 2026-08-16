@@ -4,24 +4,20 @@ import SplitSection from '@/components/sections/SplitSection';
 import StepCardGrid from '@/components/sections/StepCardGrid';
 import ReviewWall from '@/components/sections/ReviewWall';
 import FaqSection from '@/components/sections/FaqSection';
-import MortgageCalculators from '@/components/interactive/MortgageCalculators';
+import CalculatorsCta from '@/components/sections/CalculatorsCta';
 import ContactSection from '@/components/interactive/ContactSection';
 import LeadQualificationWizard from '@/components/interactive/LeadQualificationWizard';
-import { BC_CITIES, AB_CITIES, formatCityName } from '@/data/locations';
+import { BC_CITIES, AB_CITIES, DEDICATED_RESIDENTIAL_CITIES, formatCityName, getProvince } from '@/data/locations';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export function generateStaticParams() {
-  return [...BC_CITIES, ...AB_CITIES].map(city => ({ city }));
+  return [...BC_CITIES, ...AB_CITIES]
+    .filter(city => !DEDICATED_RESIDENTIAL_CITIES.includes(city))
+    .map(city => ({ city }));
 }
 
 export const dynamicParams = false;
-
-function getProvince(city: string) {
-  if (BC_CITIES.includes(city)) return { code: 'BC', name: 'British Columbia', hasPtt: true, provinceHref: '/mortgage-broker-british-columbia' };
-  if (AB_CITIES.includes(city)) return { code: 'AB', name: 'Alberta', hasPtt: false, provinceHref: '/mortgage-broker-alberta' };
-  return null;
-}
 
 export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
   const { city } = await params;
@@ -30,7 +26,10 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const cityFormatted = formatCityName(city);
   return {
     title: `Mortgage Broker ${cityFormatted} ${province.code} | First-Time Buyers & Self-Employed`,
-    description: `Local mortgage broker serving ${cityFormatted}, ${province.code}. Specializing in first-time buyers, self-employed mortgages, renewals and debt consolidation.`
+    description: `Local mortgage broker serving ${cityFormatted}, ${province.code}. Specializing in first-time buyers, self-employed mortgages, renewals and debt consolidation.`,
+    alternates: {
+      canonical: `https://truwestmortgage.com/mortgage-broker-${city}`
+    }
   };
 }
 
@@ -43,6 +42,9 @@ export default async function ResidentialCityPage({ params }: { params: Promise<
   const closingCostLine = province.hasPtt
     ? `Budgeting for ${province.code} Property Transfer Tax and closing costs`
     : `Budgeting for closing costs (${province.name} charges no provincial land transfer tax)`;
+  const marketDisclaimer = province.hasPtt
+    ? `General information for ${cityFormatted} and ${province.name}, not advice on your specific file, and not a commitment to lend. Lender income treatment and qualification criteria vary by lender and program and change over time; Property Transfer Tax rates and exemption thresholds change; confirm current figures against gov.bc.ca. Every application is assessed on its own facts under the applicable federal guidelines.`
+    : `General information for ${cityFormatted} and ${province.name}, not advice on your specific file, and not a commitment to lend. Lender income treatment and qualification criteria vary by lender and program and change over time. ${province.name} charges no provincial land transfer tax; Land Titles registration fees still apply; confirm current amounts before relying on them. Every application is assessed on its own facts under the applicable federal guidelines.`;
 
   return (
     <>
@@ -54,7 +56,7 @@ export default async function ResidentialCityPage({ params }: { params: Promise<
         ]}
         eyebrow={`Mortgage Broker in ${cityFormatted}, ${province.code}`}
         title={`Your local ${cityFormatted} mortgage broker.`}
-        lede={`Whether you're buying your first home in ${cityFormatted}, renewing your mortgage, or need a self-employed approval—we secure financing when the bank says no.`}
+        lede={`Whether you're buying your first home in ${cityFormatted}, renewing your mortgage, or need a self-employed approval: we secure financing when the bank says no.`}
         ctaText="Find Out What You Qualify For &rarr;"
         ctaHref="#contact"
         dataCta="talk-to-dil"
@@ -76,6 +78,7 @@ export default async function ResidentialCityPage({ params }: { params: Promise<
           closingCostLine,
           "Credit review and improvement strategies"
         ]}
+        note={marketDisclaimer}
       />
 
       <section className="py-[110px]" id="services">
@@ -110,13 +113,13 @@ export default async function ResidentialCityPage({ params }: { params: Promise<
         reviews={[
           {
             quote: "Dil and Mandeep were incredible! They were communicative, supportive, and knowledgeable. They guided us every step of the way, making the process much smoother. Highly recommend!",
-            author: "Jackie Gee · Google review",
+            author: "Jackie Gee · March 2026 · Google",
             stars: 5
           }
         ]}
       />
 
-      <MortgageCalculators hasPtt={province.hasPtt} />
+      <CalculatorsCta />
 
       <FaqSection
         title={`${cityFormatted} Mortgage FAQ`}

@@ -6,7 +6,7 @@ import ReviewWall from '@/components/sections/ReviewWall';
 import FaqSection from '@/components/sections/FaqSection';
 import ContactSection from '@/components/interactive/ContactSection';
 import ScenarioReviewForm from '@/components/interactive/ScenarioReviewForm';
-import { BC_CITIES, AB_CITIES, formatCityName } from '@/data/locations';
+import { BC_CITIES, AB_CITIES, formatCityName, getProvince } from '@/data/locations';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -16,12 +16,6 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-function getProvince(city: string) {
-  if (BC_CITIES.includes(city)) return { code: 'BC', name: 'British Columbia' };
-  if (AB_CITIES.includes(city)) return { code: 'AB', name: 'Alberta' };
-  return null;
-}
-
 export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
   const { city } = await params;
   const province = getProvince(city);
@@ -29,7 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const cityFormatted = formatCityName(city);
   return {
     title: `Commercial Mortgage Broker ${cityFormatted} ${province.code} | TruWest`,
-    description: `Commercial property financing, multi-family, land development, and multi-property investor portfolio structuring in ${cityFormatted}, ${province.code}.`
+    description: `Commercial property financing, multi-family, land development, and multi-property investor portfolio structuring in ${cityFormatted}, ${province.code}.`,
+    alternates: {
+      canonical: `https://truwestmortgage.com/commercial-mortgage-broker-${city}`
+    }
   };
 }
 
@@ -61,7 +58,7 @@ export default async function CommercialCityPage({ params }: { params: Promise<{
         eyebrow="Commercial Lending"
         title="Commercial isn't a sideline. It's a specialty."
         paragraphs={[
-          "Commercial files live or die on structure — loan-to-value, debt coverage, lease strength, exit. Bring the deal early.",
+          "Commercial files live or die on structure: loan-to-value, debt coverage, lease strength, exit. Bring the deal early.",
           `We secure financing for multi-family, mixed-use, retail, industrial, and land development projects in and around ${cityFormatted}.`
         ]}
         ctaText="Explore Options"
@@ -97,7 +94,7 @@ export default async function CommercialCityPage({ params }: { params: Promise<{
         reviews={[
           {
             quote: "I recently had the working with Dilmohan for business mortgage needs, he was incredibly supportive and informative. His expertise and guidance were invaluable, ensuring I understood every step of the process.",
-            author: "Sung Cin Par Cinpar · Google review",
+            author: "Sung Cin Par Cinpar · Apr 15, 2025 · Google",
             stars: 5
           }
         ]}
@@ -108,7 +105,7 @@ export default async function CommercialCityPage({ params }: { params: Promise<{
         items={[
           {
             question: "What is the difference between commercial and residential qualification?",
-            answer: "Residential mortgages focus heavily on your personal income. Commercial mortgages focus primarily on the asset itself — its Debt Service Coverage Ratio (DSCR), Net Operating Income (NOI), and the strength of the leases."
+            answer: "Residential mortgages focus heavily on your personal income. Commercial mortgages focus primarily on the asset itself: its Debt Service Coverage Ratio (DSCR), Net Operating Income (NOI), and the strength of the leases."
           },
           {
             question: `Do you handle land and construction financing in ${cityFormatted}?`,
