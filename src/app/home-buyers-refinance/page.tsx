@@ -94,8 +94,8 @@ export default function HomeBuyersPage() {
               },
               {
                 badge: 'Source 04',
-                title: 'BC property transfer tax exemptions',
-                description: 'First-time buyer and newly built home exemptions may reduce or eliminate BC property transfer tax on qualifying purchases. Thresholds and eligibility rules change; confirm your situation before you budget for closing.'
+                title: 'Budgeting for Property Transfer Tax and closing cost',
+                description: 'BC charges a provincial property transfer tax, with first-time buyer and newly built home exemptions that may reduce or eliminate it on qualifying purchases; Alberta has no provincial land transfer tax but still carries registration and closing costs. Thresholds and eligibility rules change: confirm your situation before you budget for closing.'
               }
             ]}
           />
@@ -156,7 +156,7 @@ export default function HomeBuyersPage() {
           <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">Other residential files</span>
           <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[70px]">Beyond the first home.</h2>
           <StepCardGrid
-            columns={3}
+            columns={1}
             items={[
               {
                 badge: 'Scenario 01',

@@ -28,7 +28,7 @@ export default function Navbar() {
         {/* Links */}
         <ul className={`${navOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row absolute lg:static top-[80px] left-0 w-full lg:w-auto bg-white lg:bg-transparent border-b lg:border-none border-line p-6 lg:p-0 gap-6 lg:gap-5 xl:gap-6 items-start lg:items-center shadow-lg lg:shadow-none`}>
           <li><Link href="/self-employed" className="font-sans text-[15.5px] font-medium text-stone hover:text-ink whitespace-nowrap" onClick={() => setNavOpen(false)}>Self-Employed</Link></li>
-          <li><Link href="/home-buyers-refinance" className="font-sans text-[15.5px] font-medium text-stone hover:text-ink whitespace-nowrap" onClick={() => setNavOpen(false)}>Home Buyers</Link></li>
+          <li><Link href="/home-buyers-refinance" className="font-sans text-[15.5px] font-medium text-stone hover:text-ink whitespace-nowrap" onClick={() => setNavOpen(false)}>First-Time Buyers</Link></li>
           <li><Link href="/commercial-investors" className="font-sans text-[15.5px] font-medium text-stone hover:text-ink whitespace-nowrap" onClick={() => setNavOpen(false)}>Commercial</Link></li>
           <li><Link href="/referral-partners" className="font-sans text-[15.5px] font-medium text-stone hover:text-ink whitespace-nowrap" onClick={() => setNavOpen(false)}>Partners</Link></li>
           <li><Link href="/calculators" className="font-sans text-[15.5px] font-medium text-stone hover:text-ink whitespace-nowrap" onClick={() => setNavOpen(false)}>Calculators</Link></li>
