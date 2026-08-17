@@ -59,7 +59,7 @@ export default function LeadQualificationWizard({ formName, pageSource, defaultG
           <span className="font-mono text-[11px] tracking-[0.14em] text-[#6E6A63] uppercase">Step 2 of 3</span>
           <div className="font-serif font-medium text-[26px] md:text-[32px] text-white leading-[1.1]">Estimated property or loan value?</div>
           <div className="flex flex-col gap-[8px]">
-            {['$300k – $500k', '$500k – $1M', '$1M+', 'Not sure yet'].map(v => (
+            {['$300k - $500k', '$500k - $1M', '$1M+', 'Not sure yet'].map(v => (
               <button key={v} type="button" className="group flex justify-between items-center bg-[#242424] hover:bg-[#2C2C2A] border border-[#2C2C2A] p-[20px_24px] text-left transition-colors duration-300" onClick={() => handleValue(v)}>
                 <span className="font-sans font-medium text-[16.5px] text-[#EDEBE6]">{v}</span>
                 <span className="text-bronze font-mono opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-300">&rarr;</span>
@@ -102,7 +102,11 @@ export default function LeadQualificationWizard({ formName, pageSource, defaultG
           </p>
 
           <div className="font-mono text-[10.5px] tracking-[0.08em] text-[#B08A4E] bg-[#242424] border border-[#2C2C2A] p-[12px_16px] flex items-center justify-center gap-2">
-            <span>🔒</span> BCFSA & RECA Compliant &middot; 100% Confidential &middot; Direct response from Dilmohan Aneja
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" className="shrink-0">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            BCFSA & RECA Compliant &middot; 100% Confidential &middot; Direct response from Dilmohan Aneja
           </div>
 
           <button type="submit" className="inline-flex items-center justify-center min-h-[54px] w-full bg-white text-ink font-sans font-medium text-[16px] tracking-[0.02em] hover:bg-bronze hover:text-white transition-colors duration-300 mt-2">

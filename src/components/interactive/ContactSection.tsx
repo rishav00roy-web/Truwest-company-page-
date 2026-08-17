@@ -1,4 +1,3 @@
-"use client";
 import React from 'react';
 
 interface ContactSectionProps {
@@ -6,6 +5,8 @@ interface ContactSectionProps {
   note?: string;
 }
 
+// Every icon here sits next to its own text label, so it is decorative: hidden
+// from assistive tech, and kept out of the tab order in IE/older engines.
 const iconProps = {
   width: 18,
   height: 18,
@@ -14,7 +15,9 @@ const iconProps = {
   stroke: 'currentColor',
   strokeWidth: 1.5,
   strokeLinecap: 'round' as const,
-  strokeLinejoin: 'round' as const
+  strokeLinejoin: 'round' as const,
+  'aria-hidden': true,
+  focusable: false
 };
 
 const contactRows = [
@@ -54,7 +57,7 @@ const contactRows = [
     label: 'Address',
     href: 'https://maps.google.com/?q=215-12565+88+Ave+Surrey+BC+V3W+3J7',
     external: true,
-    value: '215–12565 88 Ave, Surrey, BC V3W 3J7',
+    value: '215-12565 88 Ave, Surrey, BC V3W 3J7',
     icon: (
       <svg {...iconProps}>
         <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -108,7 +111,6 @@ export default function ContactSection({ children, note }: ContactSectionProps) 
       <div className="max-w-[1140px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-[80px] lg:gap-[120px] items-start">
           <div>
-            <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-6">Contact Us</span>
             <h2 className="font-serif font-medium text-[clamp(38px,5vw,56px)] leading-[1.05] text-white mb-6">Twenty minutes. Straight answers.</h2>
             <p className="font-sans text-[18px] leading-[1.65] text-[#B8B4AC] mb-[60px]">Tell us about your situation. We respond within one business day.</p>
 

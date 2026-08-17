@@ -14,7 +14,7 @@ export default function Footer() {
               Bespoke mortgage strategy for self-employed borrowers, investors and complex financial situations.
             </p>
             <div className="flex flex-col gap-2">
-              <p className="text-[14px] text-white font-sans tracking-wide">215&ndash;12565 88 Ave, Surrey, BC V3W 3J7</p>
+              <p className="text-[14px] text-white font-sans tracking-wide">215-12565 88 Ave, Surrey, BC V3W 3J7</p>
               <p className="text-[14px] text-white font-sans tracking-wide">Call: <a href="tel:+16045930197" className="hover:text-bronze transition-colors duration-300">(604) 593-0197</a></p>
               <p className="text-[14px] text-white font-sans tracking-wide">Email: <a href="mailto:info@truwestmortgage.com" className="hover:text-bronze transition-colors duration-300">info@truwestmortgage.com</a></p>
             </div>
@@ -64,8 +64,8 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex gap-[24px] font-mono text-[11px] tracking-[0.1em] uppercase">
-            <span className="hover:text-white cursor-pointer transition-colors duration-300">Privacy Policy</span>
-            <span className="hover:text-white cursor-pointer transition-colors duration-300">Terms of Use</span>
+            <button type="button" className="hover:text-white cursor-pointer transition-colors duration-300">Privacy Policy</button>
+            <button type="button" className="hover:text-white cursor-pointer transition-colors duration-300">Terms of Use</button>
           </div>
         </div>
       </div>

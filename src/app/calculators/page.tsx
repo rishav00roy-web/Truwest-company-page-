@@ -44,7 +44,6 @@ export default function CalculatorsPage() {
           </div>
 
           <div className="mt-[80px] pt-[64px] border-t border-line">
-            <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[18px]">More Tools</span>
             <h2 className="font-serif font-medium text-[clamp(28px,3.5vw,38px)] leading-[1.1] text-ink mb-4">Renewal, comparisons & more, from Canadian Mortgage App.</h2>
             <p className="font-sans text-[15px] leading-[1.6] text-stone max-w-[640px] mb-8">A wider set of specialty calculators (renewal, debt-service ratios and side-by-side scenario comparison), powered by our partner Canadian Mortgage App.</p>
             <div className="bg-white border border-line p-8 md:p-12">

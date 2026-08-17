@@ -73,17 +73,16 @@ export default async function CommercialCityPage({ params }: { params: Promise<{
 
       <section className="py-[110px]" id="asset-types">
         <div className="wrap">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">What we finance</span>
           <h2 className="text-[clamp(34px,4.5vw,52px)] mb-[70px]">Commercial property categories.</h2>
           <StepCardGrid
             columns={3}
             items={[
-              { badge: 'Asset 01', title: 'Multi-family & apartment', description: 'Purpose-built rental, NOI, DSCR, rent roll analysis.' },
-              { badge: 'Asset 02', title: 'Mixed-use', description: 'Retail at grade with residential above. Structuring commercial vs residential components.' },
-              { badge: 'Asset 03', title: 'Retail & office', description: 'Lease covenants, remaining terms, and rollover risk analysis.' },
-              { badge: 'Asset 04', title: 'Industrial & warehouse', description: 'Clear height, zoning, environmental review and specialized use considerations.' },
-              { badge: 'Asset 05', title: 'Owner-occupied premises', description: 'Blending property security with your core business cash flow.' },
-              { badge: 'Asset 06', title: 'Land & development', description: 'Raw land, assembly, zoning stage, and exit credibility.' }
+              { title: 'Multi-family & apartment', description: 'Purpose-built rental, NOI, DSCR, rent roll analysis.' },
+              { title: 'Mixed-use', description: 'Retail at grade with residential above. Structuring commercial vs residential components.' },
+              { title: 'Retail & office', description: 'Lease covenants, remaining terms, and rollover risk analysis.' },
+              { title: 'Industrial & warehouse', description: 'Clear height, zoning, environmental review and specialized use considerations.' },
+              { title: 'Owner-occupied premises', description: 'Blending property security with your core business cash flow.' },
+              { title: 'Land & development', description: 'Raw land, assembly, zoning stage, and exit credibility.' }
             ]}
           />
         </div>

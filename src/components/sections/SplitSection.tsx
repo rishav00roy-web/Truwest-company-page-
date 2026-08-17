@@ -2,7 +2,7 @@ import React from 'react';
 
 interface SplitSectionProps {
   id: string;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   paragraphs: string[];
   ctaText?: string;
@@ -14,8 +14,8 @@ interface SplitSectionProps {
 export default function SplitSection({ id, eyebrow, title, paragraphs, ctaText, ctaHref, tickItems, note }: SplitSectionProps) {
   return (
     <section className="py-[110px]" id={id}>
-      <div className="max-w-[1140px] mx-auto">
-        <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">{eyebrow}</span>
+      <div className="max-w-[1140px] mx-auto px-6">
+        {eyebrow && <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">{eyebrow}</span>}
         <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-[64px] items-start">
           <div>
             <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.06] tracking-[-0.01em] text-ink mb-[20px]">{title}</h2>
@@ -41,7 +41,7 @@ export default function SplitSection({ id, eyebrow, title, paragraphs, ctaText, 
             </ul>
           </div>
         </div>
-        {note && <p className="mt-[48px] font-sans text-[12.5px] text-[#635F57] max-w-[780px] leading-[1.75]">{note}</p>}
+        {note && <p className="mt-[48px] font-sans text-[12.5px] text-stone max-w-[780px] leading-[1.75]">{note}</p>}
       </div>
     </section>
   );

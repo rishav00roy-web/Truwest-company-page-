@@ -46,23 +46,26 @@ export default function CommercialInvestorsPage() {
         ctaText="Discuss a Commercial File &rarr;"
         ctaHref="#contact"
         dataCta="commercial-file"
+        image={{
+          src: "/images/commercial-hero.jpg",
+          alt: "A mid-rise building under construction at dusk beside city towers",
+        }}
       />
 
       <section className="bg-[#F5F3EE] py-[110px]" id="asset-types">
         <div className="max-w-[1140px] mx-auto px-6">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">What we finance</span>
           <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[14px]">Commercial property categories.</h2>
           <p className="font-sans text-[17px] leading-[1.65] text-stone max-w-[700px] mb-[70px]">Every asset class underwrites differently. What follows is how lenders tend to look at each one, and what we prepare before the file goes anywhere.</p>
           
           <StepCardGrid 
             columns={3}
             items={[
-              { badge: 'Asset 01', title: 'Multi-family & apartment', description: 'Purpose-built rental, NOI, DSCR, rent roll analysis.' },
-              { badge: 'Asset 02', title: 'Mixed-use', description: 'Retail at grade with residential above. Structuring commercial vs residential components.' },
-              { badge: 'Asset 03', title: 'Retail & office', description: 'Lease covenants, remaining terms, and rollover risk analysis.' },
-              { badge: 'Asset 04', title: 'Industrial & warehouse', description: 'Clear height, zoning, environmental review and specialized use considerations.' },
-              { badge: 'Asset 05', title: 'Owner-occupied premises', description: 'Blending property security with your core business cash flow.' },
-              { badge: 'Asset 06', title: 'Land & development', description: 'Raw land, assembly, zoning stage, and exit credibility.' }
+              { title: 'Multi-family & apartment', description: 'Purpose-built rental, NOI, DSCR, rent roll analysis.' },
+              { title: 'Mixed-use', description: 'Retail at grade with residential above. Structuring commercial vs residential components.' },
+              { title: 'Retail & office', description: 'Lease covenants, remaining terms, and rollover risk analysis.' },
+              { title: 'Industrial & warehouse', description: 'Clear height, zoning, environmental review and specialized use considerations.' },
+              { title: 'Owner-occupied premises', description: 'Blending property security with your core business cash flow.' },
+              { title: 'Land & development', description: 'Raw land, assembly, zoning stage, and exit credibility.' }
             ]}
           />
         </div>
@@ -76,17 +79,14 @@ export default function CommercialInvestorsPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-[60px] border-t border-[#2C2C2A] pt-[60px]">
             <div>
-              <span className="font-mono text-[11.5px] tracking-[0.2em] text-bronze uppercase block mb-4">STAGE 01</span>
               <h3 className="font-serif font-medium text-[20px] md:text-[22px] tracking-[0.02em] mb-[12px] text-white">Land acquisition</h3>
               <p className="font-sans text-[15px] leading-[1.6] text-[#B8B4AC]">Advance rates reflecting zoning stage & holding costs.</p>
             </div>
             <div>
-              <span className="font-mono text-[11.5px] tracking-[0.2em] text-bronze uppercase block mb-4">STAGE 02</span>
               <h3 className="font-serif font-medium text-[20px] md:text-[22px] tracking-[0.02em] mb-[12px] text-white">Servicing & serviced lots</h3>
               <p className="font-sans text-[15px] leading-[1.6] text-[#B8B4AC]">Funding infrastructure to buildable lot stage.</p>
             </div>
             <div>
-              <span className="font-mono text-[11.5px] tracking-[0.2em] text-bronze uppercase block mb-4">STAGE 03</span>
               <h3 className="font-serif font-medium text-[20px] md:text-[22px] tracking-[0.02em] mb-[12px] text-white">Construction draw management</h3>
               <p className="font-sans text-[15px] leading-[1.6] text-[#B8B4AC]">Staged advances against cost consultant inspections with builders lien holdbacks.</p>
             </div>
@@ -102,7 +102,6 @@ export default function CommercialInvestorsPage() {
 
       <SplitSection
         id="investors"
-        eyebrow="Real estate investors"
         title="The ceiling most investors hit isn’t equity. It’s qualification."
         paragraphs={[
           "As you build a portfolio, the rules change. Rental income offsets, gross add-backs, and net T1 mechanics dictate borrowing capacity far more than the equity in your properties.",
@@ -145,8 +144,8 @@ export default function CommercialInvestorsPage() {
                 </tr>
                 <tr className="border-b border-[#2C2C2A] transition-colors hover:bg-[#1C1C1C]">
                   <td className="p-[20px_24px] border-r border-[#2C2C2A] font-medium text-white">Speed to funding</td>
-                  <td className="p-[20px_24px] border-r border-[#2C2C2A]">Slower (30–90+ days)</td>
-                  <td className="p-[20px_24px]">Faster (10–21 days)</td>
+                  <td className="p-[20px_24px] border-r border-[#2C2C2A]">Slower (30-90+ days)</td>
+                  <td className="p-[20px_24px]">Faster (10-21 days)</td>
                 </tr>
                 <tr className="border-b border-[#2C2C2A] transition-colors hover:bg-[#1C1C1C]">
                   <td className="p-[20px_24px] border-r border-[#2C2C2A] font-medium text-white">Underwriting focus</td>

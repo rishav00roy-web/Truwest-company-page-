@@ -40,6 +40,10 @@ export default function ReferralPartnersPage() {
         ctaText="Send a Scenario for Review &rarr;"
         ctaHref="#contact"
         dataCta="partner-scenario"
+        image={{
+          src: "/images/partners-hero.jpg",
+          alt: "A real estate agent reviewing paperwork with a couple inside a home",
+        }}
       />
 
       <SplitSection
@@ -86,24 +90,20 @@ export default function ReferralPartnersPage() {
 
       <section className="bg-white py-[110px]" id="commitment">
         <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">Our commitment to partners</span>
           <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[14px]">What you can expect, every time.</h2>
           <p className="font-sans text-[17px] leading-[1.65] text-stone max-w-[640px] mb-[48px]">A referral puts your reputation on the line as much as ours. These are the standards we hold ourselves to, not aspirations.</p>
           <StepCardGrid
             columns={3}
             items={[
               {
-                badge: 'Commitment 01',
                 title: 'Fast first response',
                 description: 'Every scenario is acknowledged within one business day. Where we have enough information, that first reply includes our initial read on viability rather than a request to book a call.'
               },
               {
-                badge: 'Commitment 02',
                 title: 'A straight answer, including no',
                 description: 'If a file isn’t financeable as presented, we tell you plainly and explain what would need to change. We won’t hold a deal open on optimism while your timeline runs out.'
               },
               {
-                badge: 'Commitment 03',
                 title: 'Transparent status through to funding',
                 description: 'You’ll know where the file stands at each stage (submission, approval, conditions and funding) without having to chase for an update.'
               }

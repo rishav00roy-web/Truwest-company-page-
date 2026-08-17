@@ -105,21 +105,39 @@ export default function MortgageCalculators({ hasPtt = false }: { hasPtt?: boole
     return { t1, t2, t3, t4, total: t1 + t2 + t3 + t4 };
   }, [pttPrice]);
 
+  // Panels are conditionally mounted, so `aria-controls` is only set on the active
+  // tab; pointing at an absent id is worse than omitting it. Arrow/Home/End keys
+  // are the movement `role="tab"` implies, paired with the roving tabindex below.
+  const tabCount = hasPtt ? 3 : 2;
+  const onTabKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const next: Record<string, number> = {
+      ArrowRight: tab === tabCount ? 1 : tab + 1,
+      ArrowLeft: tab === 1 ? tabCount : tab - 1,
+      Home: 1,
+      End: tabCount,
+    };
+    const target = next[e.key];
+    if (!target) return;
+    e.preventDefault();
+    setTab(target);
+    document.getElementById(`tab-${target}`)?.focus();
+  };
+
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[1px] bg-line border border-line mb-[1px]">
-        <button className={`p-6 text-left transition-colors duration-300 ${tab === 1 ? 'bg-ink' : 'bg-white hover:bg-[#FAFAF7]'}`} onClick={() => setTab(1)}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[1px] bg-line border border-line mb-[1px]" role="tablist" onKeyDown={onTabKeyDown}>
+        <button role="tab" id="tab-1" aria-selected={tab === 1} tabIndex={tab === 1 ? 0 : -1} aria-controls={tab === 1 ? "panel-1" : undefined} className={`p-6 text-left transition-colors duration-300 ${tab === 1 ? 'bg-ink' : 'bg-white hover:bg-[#FAFAF7]'}`} onClick={() => setTab(1)}>
           <span className={`block font-mono text-[11px] tracking-[0.18em] uppercase mb-4 ${tab === 1 ? 'text-bronze' : 'text-stone'}`}>Tool 01</span>
           <span className={`block font-serif font-medium text-[22px] mb-2 ${tab === 1 ? 'text-white' : 'text-ink'}`}>Mortgage Payment</span>
           <span className={`block font-sans text-[14px] leading-[1.5] ${tab === 1 ? 'text-[#B8B4AC]' : 'text-stone'}`}>What will it actually cost, per month or per payday?</span>
         </button>
-        <button className={`p-6 text-left transition-colors duration-300 ${tab === 2 ? 'bg-ink' : 'bg-white hover:bg-[#FAFAF7]'}`} onClick={() => setTab(2)}>
+        <button role="tab" id="tab-2" aria-selected={tab === 2} tabIndex={tab === 2 ? 0 : -1} aria-controls={tab === 2 ? "panel-2" : undefined} className={`p-6 text-left transition-colors duration-300 ${tab === 2 ? 'bg-ink' : 'bg-white hover:bg-[#FAFAF7]'}`} onClick={() => setTab(2)}>
           <span className={`block font-mono text-[11px] tracking-[0.18em] uppercase mb-4 ${tab === 2 ? 'text-bronze' : 'text-stone'}`}>Tool 02</span>
           <span className={`block font-serif font-medium text-[22px] mb-2 ${tab === 2 ? 'text-white' : 'text-ink'}`}>Affordability</span>
           <span className={`block font-sans text-[14px] leading-[1.5] ${tab === 2 ? 'text-[#B8B4AC]' : 'text-stone'}`}>How much home do your numbers realistically support?</span>
         </button>
         {hasPtt && (
-          <button className={`p-6 text-left transition-colors duration-300 ${tab === 3 ? 'bg-ink' : 'bg-white hover:bg-[#FAFAF7]'}`} onClick={() => setTab(3)}>
+          <button role="tab" id="tab-3" aria-selected={tab === 3} tabIndex={tab === 3 ? 0 : -1} aria-controls={tab === 3 ? "panel-3" : undefined} className={`p-6 text-left transition-colors duration-300 ${tab === 3 ? 'bg-ink' : 'bg-white hover:bg-[#FAFAF7]'}`} onClick={() => setTab(3)}>
             <span className={`block font-mono text-[11px] tracking-[0.18em] uppercase mb-4 ${tab === 3 ? 'text-bronze' : 'text-stone'}`}>Tool 03</span>
             <span className={`block font-serif font-medium text-[22px] mb-2 ${tab === 3 ? 'text-white' : 'text-ink'}`}>BC Property Transfer Tax</span>
             <span className={`block font-sans text-[14px] leading-[1.5] ${tab === 3 ? 'text-[#B8B4AC]' : 'text-stone'}`}>The closing cost too many buyers forget to budget.</span>
@@ -129,24 +147,24 @@ export default function MortgageCalculators({ hasPtt = false }: { hasPtt?: boole
 
       <div className="min-h-[500px]">
         {tab === 1 && (
-          <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-[1px] bg-line border border-line">
+          <div role="tabpanel" id="panel-1" aria-labelledby="tab-1" className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-[1px] bg-line border border-line">
             <div className="bg-white p-8 md:p-[40px_32px]">
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Purchase price ($)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={pPrice} onChange={e => setPPrice(Number(e.target.value))} />
+                  <label htmlFor="calc-purchase-price" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Purchase price ($)</label>
+                  <input id="calc-purchase-price" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={pPrice} onChange={e => setPPrice(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Down payment ($)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={pDown} onChange={e => setPDown(Number(e.target.value))} />
+                  <label htmlFor="calc-down-payment" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Down payment ($)</label>
+                  <input id="calc-down-payment" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={pDown} onChange={e => setPDown(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Interest rate (%)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={pRate} step="0.01" onChange={e => setPRate(Number(e.target.value))} />
+                  <label htmlFor="calc-interest-rate" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Interest rate (%)</label>
+                  <input id="calc-interest-rate" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={pRate} step="0.01" onChange={e => setPRate(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Amortization (years)</label>
-                  <select className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" value={pAmort} onChange={e => setPAmort(Number(e.target.value))}>
+                  <label htmlFor="calc-amortization" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Amortization (years)</label>
+                  <select id="calc-amortization" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" value={pAmort} onChange={e => setPAmort(Number(e.target.value))}>
                     {[15, 20, 25, 30].map(y => <option key={y} value={y}>{y} years</option>)}
                   </select>
                 </div>
@@ -182,38 +200,38 @@ export default function MortgageCalculators({ hasPtt = false }: { hasPtt?: boole
                 </ul>
               )}
 
-              {'error' in paymentData && <p className="font-sans text-[14.5px] text-[#FF8585] bg-[#331A1A] border border-[#4D2626] px-4 py-3 mb-6">{paymentData.error}</p>}
+              {'error' in paymentData && <p role="alert" className="font-sans text-[14.5px] text-[#FF8585] bg-[#331A1A] border border-[#4D2626] px-4 py-3 mb-6">{paymentData.error}</p>}
               <p className="font-sans text-[12.5px] text-[#6E6A63] leading-[1.6]">Uses standard semi-annual compounding and CMHC-published insurance-premium tiers. Your actual rate, lender fees and insurer program can change these numbers.</p>
             </div>
           </div>
         )}
         {tab === 2 && (
-          <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-[1px] bg-line border border-line">
+          <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-[1px] bg-line border border-line">
             <div className="bg-white p-8 md:p-[40px_32px]">
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Gross annual household income ($)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={income} onChange={e => setIncome(Number(e.target.value))} />
+                  <label htmlFor="afford-income" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Gross annual household income ($)</label>
+                  <input id="afford-income" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={income} onChange={e => setIncome(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Monthly debt payments ($)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={debts} onChange={e => setDebts(Number(e.target.value))} />
+                  <label htmlFor="afford-debts" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Monthly debt payments ($)</label>
+                  <input id="afford-debts" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={debts} onChange={e => setDebts(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Down payment available ($)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={down} onChange={e => setDown(Number(e.target.value))} />
+                  <label htmlFor="afford-down" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Down payment available ($)</label>
+                  <input id="afford-down" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={down} onChange={e => setDown(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Interest rate (%)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={rate} step="0.01" onChange={e => setRate(Number(e.target.value))} />
+                  <label htmlFor="afford-rate" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Interest rate (%)</label>
+                  <input id="afford-rate" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={rate} step="0.01" onChange={e => setRate(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Est. monthly property tax ($)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={tax} onChange={e => setTax(Number(e.target.value))} />
+                  <label htmlFor="afford-tax" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Est. monthly property tax ($)</label>
+                  <input id="afford-tax" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={tax} onChange={e => setTax(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Monthly condo/strata fees ($)</label>
-                  <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={condo} onChange={e => setCondo(Number(e.target.value))} />
+                  <label htmlFor="afford-condo" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Monthly condo/strata fees ($)</label>
+                  <input id="afford-condo" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={condo} onChange={e => setCondo(Number(e.target.value))} />
                 </div>
               </div>
             </div>
@@ -250,17 +268,17 @@ export default function MortgageCalculators({ hasPtt = false }: { hasPtt?: boole
                 </li>
               </ul>
 
-              {affordData.error && <p className="font-sans text-[14.5px] text-[#FF8585] bg-[#331A1A] border border-[#4D2626] px-4 py-3 mb-6">{affordData.error}</p>}
+              {affordData.error && <p role="alert" className="font-sans text-[14.5px] text-[#FF8585] bg-[#331A1A] border border-[#4D2626] px-4 py-3 mb-6">{affordData.error}</p>}
               <p className="font-sans text-[12.5px] text-[#6E6A63] leading-[1.6]">Assumes a 25-year amortization, $150/month heating, 50% of any condo/strata fees, and standard 39% GDS / 44% TDS limits, stress-tested at your rate + 2% (minimum 5.25%).</p>
             </div>
           </div>
         )}
         {tab === 3 && hasPtt && (
-          <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-[1px] bg-line border border-line">
+          <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-[1px] bg-line border border-line">
             <div className="bg-white p-8 md:p-[40px_32px]">
               <div className="flex flex-col gap-2">
-                <label className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Purchase price ($)</label>
-                <input className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={pttPrice} onChange={e => setPttPrice(Number(e.target.value))} />
+                <label htmlFor="ptt-price" className="font-mono text-[10.5px] tracking-[0.1em] text-stone uppercase">Purchase price ($)</label>
+                <input id="ptt-price" className="w-full bg-[#FAFAF7] border border-line px-4 py-3 font-sans text-[16px] text-ink outline-none focus:border-bronze transition-colors" type="number" value={pttPrice} onChange={e => setPttPrice(Number(e.target.value))} />
               </div>
             </div>
             <div className="bg-[#1C1C1C] p-8 md:p-[60px] text-white flex flex-col justify-center">
@@ -274,7 +292,7 @@ export default function MortgageCalculators({ hasPtt = false }: { hasPtt?: boole
                   <span className="text-white text-right">{money(pttData.t1)}</span>
                 </li>
                 <li className="flex justify-between py-4 border-b border-[#2C2C2A] text-[15px] font-sans">
-                  <span className="text-[#9C988F]">2% on $200,000–$2,000,000</span>
+                  <span className="text-[#9C988F]">2% on $200,000-$2,000,000</span>
                   <span className="text-white text-right">{money(pttData.t2)}</span>
                 </li>
                 <li className="flex justify-between py-4 border-b border-[#2C2C2A] text-[15px] font-sans">

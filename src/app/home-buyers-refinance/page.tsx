@@ -49,11 +49,14 @@ export default function HomeBuyersPage() {
         ctaText="Find Out What You Qualify For &rarr;"
         ctaHref="#contact"
         dataCta="talk-to-dil"
+        image={{
+          src: "/images/first-time-buyers-hero.jpg",
+          alt: "A couple carrying moving boxes and house keys into their new home",
+        }}
       />
 
       <SplitSection
         id="first-time"
-        eyebrow="First-time buyers"
         title="We run the numbers so you can run the search."
         paragraphs={[
           "Online calculators give you a guess. A real pre-qualification gives you a ceiling.",
@@ -72,29 +75,24 @@ export default function HomeBuyersPage() {
 
       <section className="bg-white py-[110px]" id="down-payment-sources">
         <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">First-time buyers</span>
           <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[70px]">Your down payment has more sources than you think.</h2>
           <StepCardGrid
             columns={4}
             items={[
               {
-                badge: 'Source 01',
                 title: 'First Home Savings Account (FHSA)',
                 description: 'A registered account designed for first-home savings, with contribution and lifetime limits set by the federal government. Eligibility and limits apply: worth confirming with your accountant or financial planner alongside your mortgage plan.'
               },
               {
-                badge: 'Source 02',
                 title: 'RRSP Home Buyers’ Plan',
                 description: 'Allows eligible first-time buyers to withdraw from an RRSP toward a home purchase, repaid over a set schedule. Withdrawal limits, holding periods and repayment terms are set by CRA and change from time to time.'
               },
               {
-                badge: 'Source 03',
                 title: 'Gifted down payments',
                 description: 'Many lenders accept gifted funds from an immediate family member, supported by a signed gift letter and evidence the funds are a gift rather than a loan. Requirements vary by lender: we’ll tell you exactly what yours needs.'
               },
               {
-                badge: 'Source 04',
-                title: 'Budgeting for Property Transfer Tax and closing cost',
+                title: 'Budgeting for Property Transfer Tax and closing costs',
                 description: 'BC charges a provincial property transfer tax, with first-time buyer and newly built home exemptions that may reduce or eliminate it on qualifying purchases; Alberta has no provincial land transfer tax but still carries registration and closing costs. Thresholds and eligibility rules change: confirm your situation before you budget for closing.'
               }
             ]}
@@ -153,13 +151,11 @@ export default function HomeBuyersPage() {
 
       <section className="bg-white py-[110px]" id="scenarios">
         <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">Other residential files</span>
           <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[70px]">Beyond the first home.</h2>
           <StepCardGrid
             columns={1}
             items={[
               {
-                badge: 'Scenario 01',
                 title: 'New to Canada',
                 description: 'Thin Canadian credit and foreign income shouldn’t lock you out of the market. We work with lenders who run specific newcomer programs and know how to package the file.'
               }
@@ -191,7 +187,7 @@ export default function HomeBuyersPage() {
         items={[
           {
             question: "What is the minimum down payment required in Canada?",
-            answer: "For a home under $500,000, the minimum is 5%. For a home between $500,000 and $999,999, you need 5% on the first $500k, and 10% on the portion above that. Homes $1M or over require a 20% minimum down payment."
+            answer: "For a home under $500,000, the minimum is 5%. For a home between $500,000 and $1,499,999, you need 5% on the first $500k and 10% on the portion above that. Homes at $1.5M or above require a 20% minimum down payment."
           },
           {
             question: "What is the mortgage stress test?",
@@ -199,7 +195,7 @@ export default function HomeBuyersPage() {
           },
           {
             question: "How does the BC Property Transfer Tax work for first-time buyers?",
-            answer: "If you are a Canadian citizen or permanent resident, have lived in BC for a year, and are buying your first home anywhere in the world for under $500,000, you may be fully exempt. Partial exemptions exist up to $525,000 (and higher for newly built homes)."
+            answer: "If you are a Canadian citizen or permanent resident, have lived in BC for a year, and are buying your first home anywhere in the world for under $835,000, you may be fully exempt. Partial exemptions phase out up to $860,000 (and higher thresholds apply for newly built homes). Thresholds change: confirm current figures with Dil before budgeting."
           },
           {
             question: "Should I wait for my bank’s renewal offer?",

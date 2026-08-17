@@ -89,17 +89,14 @@ export default async function ResidentialCityPage({ params }: { params: Promise<
             columns={3}
             items={[
               {
-                badge: 'Specialty 01',
                 title: 'Self-Employed Mortgages',
                 description: 'We use corporate financials, bank statements, and grossed-up income to qualify business owners who get declined by traditional banks.'
               },
               {
-                badge: 'Specialty 02',
                 title: 'First-Time Home Buyers',
                 description: 'We map out your exact affordability, down payment sources, and the closing costs you need to budget for before you start shopping.'
               },
               {
-                badge: 'Specialty 03',
                 title: 'Renewals & Refinancing',
                 description: "Don't sign your bank's renewal letter blindly. We make 50+ lenders compete for your maturity date to ensure you get the right rate."
               }

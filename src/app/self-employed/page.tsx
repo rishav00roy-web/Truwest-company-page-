@@ -55,11 +55,14 @@ export default function SelfEmployedPage() {
         ctaText="Get Your Self-Employed File Reviewed &rarr;"
         ctaHref="#contact"
         dataCta="talk-to-dil"
+        image={{
+          src: "/images/self-employed-hero.jpg",
+          alt: "A self-employed potter standing in his own workshop, surrounded by finished work",
+        }}
       />
 
       <FlagshipSection
         id="comparison"
-        eyebrow="The core problem"
         title="What banks see vs. what TruWest sees."
         intro="You write off expenses to keep taxes low. Smart. Then the bank uses that same low income to decline you. Not smart. This is exactly the kind of problem we know how to navigate."
         ctaText="Get Your Self-Employed File Reviewed &rarr;"
@@ -89,23 +92,19 @@ export default function SelfEmployedPage() {
 
       <section className="bg-white py-[110px]" id="borrower-types">
         <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">Which one are you?</span>
           <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[70px]">Three self-employed files. Three different approaches.</h2>
           <StepCardGrid 
             columns={3}
             items={[
               {
-                badge: 'Type 01',
                 title: 'Sole Proprietors',
                 description: 'Contractors, consultants and trades. Depending on the lender and program, gross-up methods, business income and bank statements may help provide a more complete picture of qualifying income.'
               },
               {
-                badge: 'Type 02',
                 title: 'Incorporated Business Owners',
                 description: 'Your personal tax return isn\'t always the whole story. Corporate financials, dividends, retained earnings and cash flow can help demonstrate the strength of your business.'
               },
               {
-                badge: 'Type 03',
                 title: 'Business-for-Self, under 2 years',
                 description: 'A short self-employment history does not automatically mean there is no financing path. Your previous experience, industry, income, credit, down payment and overall file may all matter.'
               }
@@ -123,17 +122,14 @@ export default function SelfEmployedPage() {
             columns={3}
             items={[
               {
-                badge: 'Phase 01',
                 title: 'Place the file honestly',
                 description: 'We position the file with stated income or alternative programs, ensuring terms and costs are set plainly and clearly.'
               },
               {
-                badge: 'Phase 02',
                 title: 'Use the term to strengthen',
                 description: 'We use the mortgage term to build a 2-year picture, clean up credit, and keep corporate filings current.'
               },
               {
-                badge: 'Phase 03',
                 title: 'Plan the exit from day one',
                 description: 'We map the move back to A-lending before you even sign, and review your file well ahead of renewal.'
               }
@@ -144,14 +140,13 @@ export default function SelfEmployedPage() {
 
       <section className="bg-white py-[110px]" id="documents">
         <div className="max-w-[1140px] mx-auto px-6 border-t border-line pt-[100px]">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-[22px]">Come prepared</span>
           <h2 className="font-serif font-medium text-[clamp(34px,4.5vw,52px)] leading-[1.05] text-ink mb-[14px]">What we’ll usually ask for.</h2>
           <p className="font-sans text-[17px] leading-[1.65] text-stone max-w-[600px] mb-[48px]">Not every lender asks for everything. Having these ready simply makes the assessment faster and the options clearer.</p>
           
           <div className="border-t border-line">
             {[
               { q: 'Business bank statements', bullets: [
-                'Typically 6–12 months of business account statements',
+                'Typically 6-12 months of business account statements',
                 'Used by some programs to evidence revenue and cash flow',
                 'Consistent deposits matter more than any single month'
               ] },

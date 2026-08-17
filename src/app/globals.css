@@ -69,10 +69,7 @@
   }
 }
 
-/* 
-  TEMPORARY UTILITIES FOR MIGRATION
-  These will be removed once all components are fully Tailwind-native. 
-*/
+/* Utility: max-width container matching the site's 1140px content grid. */
 @layer utilities {
   .wrap {
     max-width: 1140px;
@@ -180,5 +177,42 @@
   .reveal-card__panel {
     transition: none;
     translate: 0 0;
+  }
+}
+
+/*
+  Punchline underline reveal: sweeps in when the section scrolls into view.
+  Uses CSS animation-timeline: view() so no JavaScript is needed.
+  Browsers without scroll-timeline support get the underline shown always-on.
+*/
+@supports (animation-timeline: view()) {
+  .punch-underline::after {
+    animation: punch-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 30% entry 70%;
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .punch-underline::after {
+    scale: 1 1;
+  }
+}
+
+@keyframes punch-reveal {
+  from {
+    scale: 0 1;
+    transform-origin: left;
+  }
+  to {
+    scale: 1 1;
+    transform-origin: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .punch-underline::after {
+    animation: none;
+    scale: 1 1;
   }
 }

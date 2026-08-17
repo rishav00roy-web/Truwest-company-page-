@@ -1,4 +1,3 @@
-"use client";
 import React from 'react';
 
 interface ScenarioReviewFormProps {
@@ -80,7 +79,11 @@ export default function ScenarioReviewForm({ formName, variant = 'default' }: Sc
       </p>
 
       <div className="font-mono text-[10.5px] tracking-[0.08em] text-[#B08A4E] bg-[#242424] border border-[#2C2C2A] p-[12px_16px] flex items-center justify-center gap-2 mt-4">
-        <span>🔒</span> BCFSA & RECA Compliant &middot; 100% Confidential &middot; Direct response from Dilmohan Aneja
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" className="shrink-0">
+          <rect x="3" y="11" width="18" height="11" rx="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+        BCFSA & RECA Compliant &middot; 100% Confidential &middot; Direct response from Dilmohan Aneja
       </div>
 
       <button type="submit" className="inline-flex items-center justify-center min-h-[54px] w-full bg-white text-ink font-sans font-medium text-[16px] tracking-[0.02em] hover:bg-bronze hover:text-white transition-colors duration-300 mt-2">

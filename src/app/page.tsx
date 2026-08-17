@@ -12,6 +12,8 @@ import LeadQualificationWizard from '@/components/interactive/LeadQualificationW
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  title: 'TruWest Mortgage | Self-Employed & Complex Mortgage Broker | BC & Alberta',
+  description: 'Bespoke mortgage strategy for self-employed borrowers, investors, and complex financial situations across British Columbia and Alberta. Get direct access to an experienced broker.',
   alternates: {
     canonical: 'https://truwestmortgage.com'
   }
@@ -100,7 +102,6 @@ export default function Home() {
         <div className="max-w-[1140px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-[100px] items-start">
             <div className="flex flex-col border-t border-ink pt-8">
-              <span className="font-mono text-xs tracking-[0.22em] uppercase text-bronze mb-6">Start Here</span>
               <h2 className="font-serif font-medium text-[clamp(40px,5vw,56px)] leading-[1.05] text-ink mb-6">
                 What brings you here?
               </h2>
@@ -112,8 +113,8 @@ export default function Home() {
             <div className="flex flex-col gap-0 border-t border-line">
               <Link href="/self-employed" className="group flex flex-col sm:flex-row sm:items-center justify-between py-12 border-b border-line hover:bg-[#F9F8F6] transition-colors duration-300 px-6 -mx-6">
                 <div className="flex items-start gap-8">
-                  <span className="text-[var(--bronze-dark-bg)] mt-1 shrink-0">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <span className="text-bronze-dark-bg mt-1 shrink-0">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
                       <rect x="3" y="7" width="18" height="13" rx="2"/>
                       <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                       <path d="M3 12h18"/>
@@ -128,8 +129,8 @@ export default function Home() {
               </Link>
               <Link href="/home-buyers-refinance" className="group flex flex-col sm:flex-row sm:items-center justify-between py-12 border-b border-line hover:bg-[#F9F8F6] transition-colors duration-300 px-6 -mx-6">
                 <div className="flex items-start gap-8">
-                  <span className="text-[var(--bronze-dark-bg)] mt-1 shrink-0">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <span className="text-bronze-dark-bg mt-1 shrink-0">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
                       <path d="M3 11l9-8 9 8"/>
                       <path d="M5 10v10h14V10"/>
                       <path d="M10 20v-6h4v6"/>
@@ -144,8 +145,8 @@ export default function Home() {
               </Link>
               <Link href="/commercial-investors" className="group flex flex-col sm:flex-row sm:items-center justify-between py-12 border-b border-line hover:bg-[#F9F8F6] transition-colors duration-300 px-6 -mx-6">
                 <div className="flex items-start gap-8">
-                  <span className="text-[var(--bronze-dark-bg)] mt-1 shrink-0">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <span className="text-bronze-dark-bg mt-1 shrink-0">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
                       <rect x="4" y="3" width="16" height="18" rx="1"/>
                       <path d="M9 8h.01M9 12h.01M9 16h.01M15 8h.01M15 12h.01M15 16h.01"/>
                       <path d="M10 21v-4h4v4"/>
@@ -160,8 +161,8 @@ export default function Home() {
               </Link>
               <Link href="/referral-partners" className="group flex flex-col sm:flex-row sm:items-center justify-between py-12 border-b border-line hover:bg-[#F9F8F6] transition-colors duration-300 px-6 -mx-6">
                 <div className="flex items-start gap-8">
-                  <span className="text-[var(--bronze-dark-bg)] mt-1 shrink-0">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <span className="text-bronze-dark-bg mt-1 shrink-0">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
                       <circle cx="9" cy="8" r="3"/>
                       <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
                       <circle cx="17" cy="8" r="2.5"/>
@@ -236,7 +237,6 @@ export default function Home() {
       {/* First-Time Buyers */}
       <section className="bg-white py-[140px] px-6 border-t border-line" id="firsttime">
         <div className="max-w-[1140px] mx-auto">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-6">First-Time Buyers</span>
           <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 md:gap-20 items-start">
             <div>
               <h2 className="font-serif font-medium text-[clamp(38px,5vw,60px)] leading-[1.05] text-ink mb-6">Your first mortgage shouldn’t feel like a test you didn’t study for.</h2>
@@ -249,7 +249,7 @@ export default function Home() {
               <ul className="border-t border-line">
                 <li className="flex gap-4 items-baseline py-4 border-b border-line text-base text-ink"><span className="text-bronze font-mono shrink-0">&rarr;</span><span>What you can realistically afford, before you shop</span></li>
                 <li className="flex gap-4 items-baseline py-4 border-b border-line text-base text-ink"><span className="text-bronze font-mono shrink-0">&rarr;</span><span>Down payment sources: savings, FHSA, RRSP Home Buyers’ Plan, gifted funds</span></li>
-                <li className="flex gap-4 items-baseline py-4 border-b border-line text-base text-ink"><span className="text-bronze font-mono shrink-0">&rarr;</span><span>Insurance, BC transfer tax and the closing costs nobody warns you about</span></li>
+                <li className="flex gap-4 items-baseline py-4 border-b border-line text-base text-ink"><span className="text-bronze font-mono shrink-0">&rarr;</span><span>Insurance, transfer taxes and the closing costs nobody warns you about</span></li>
               </ul>
             </div>
           </div>
@@ -266,7 +266,6 @@ export default function Home() {
       {/* Others */}
       <section className="py-[140px] px-6 bg-white" id="others">
         <div className="max-w-[1140px] mx-auto">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-6">Everything else we fund</span>
           <h2 className="font-serif font-medium text-[clamp(38px,5vw,60px)] leading-[1.05] text-ink mb-[80px] max-w-[700px]">Complex is our comfort zone.</h2>
           <div className="border-t border-line">
             {[
@@ -315,7 +314,6 @@ export default function Home() {
       {/* Process */}
       <section className="py-[140px] px-6" id="process">
         <div className="max-w-[1140px] mx-auto border-t border-line pt-[120px]">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-6">The process</span>
           <h2 className="font-serif font-medium text-[clamp(38px,5vw,60px)] leading-[1.05] text-ink mb-[80px]">Three steps. No mystery.</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-[60px]">
             <div className="flex flex-col">
@@ -435,7 +433,6 @@ export default function Home() {
       {/* Partners */}
       <section className="bg-white py-[140px] px-6 text-center" id="partners">
         <div className="max-w-[1140px] mx-auto border-t border-line pt-[100px]">
-          <span className="font-mono text-[11.5px] tracking-[0.22em] uppercase text-bronze block mb-6">For Referral Partners</span>
           <h2 className="font-serif font-medium text-[clamp(38px,5vw,66px)] leading-[1.05] text-ink max-w-[760px] mx-auto mb-7">Financing killed your deal? Send it here first.</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-line border border-line mt-12 text-left">

@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Netlify form registration</title>
+  <meta name="robots" content="noindex" />
+</head>
+<body>
+  <!--
+    Netlify detects forms by scanning static HTML in the publish directory at
+    deploy time. The real forms are rendered by Next.js and live inside the
+    server output, where that scan does not reliably reach them, so every form
+    name is declared once here instead. This page is never linked or shown.
+
+    Generated from src/data/locations.ts. If the city lists change, regenerate:
+    the residential city forms skip DEDICATED_RESIDENTIAL_CITIES because those
+    cities have hand-written pages that use the lead-form-<city> names above.
+  -->
+  <form name="lead-form" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-self-employed" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-self-employed" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-alberta" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-alberta" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-british-columbia" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-british-columbia" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-calgary" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-calgary" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-edmonton" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-edmonton" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-surrey" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-surrey" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-vancouver" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-vancouver" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-victoria" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-victoria" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-abbotsford" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-abbotsford" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-burnaby" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-burnaby" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-chilliwack" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-chilliwack" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-coquitlam" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-coquitlam" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-delta" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-delta" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-kamloops" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-kamloops" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-kelowna" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-kelowna" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-langley" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-langley" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-maple-ridge" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-maple-ridge" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-nanaimo" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-nanaimo" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-new-westminster" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-new-westminster" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-north-vancouver" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-north-vancouver" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-penticton" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-penticton" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-port-coquitlam" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-port-coquitlam" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-port-moody" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-port-moody" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-prince-george" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-prince-george" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-richmond" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-richmond" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-vernon" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-vernon" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-white-rock" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-white-rock" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-airdrie" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-airdrie" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-lethbridge" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-lethbridge" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-medicine-hat" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-medicine-hat" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-red-deer" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-red-deer" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-st-albert" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-st-albert" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-residential-strathcona-county" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-residential-strathcona-county" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="financing_goal" />
+    <input type="text" name="value_range" />
+    <input type="text" name="page_source" />
+  </form>
+  <form name="lead-form-commercial" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="partner-scenario" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="partner-scenario" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-abbotsford" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-abbotsford" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-burnaby" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-burnaby" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-chilliwack" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-chilliwack" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-coquitlam" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-coquitlam" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-delta" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-delta" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-kamloops" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-kamloops" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-kelowna" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-kelowna" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-langley" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-langley" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-maple-ridge" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-maple-ridge" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-nanaimo" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-nanaimo" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-new-westminster" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-new-westminster" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-north-vancouver" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-north-vancouver" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-penticton" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-penticton" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-port-coquitlam" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-port-coquitlam" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-port-moody" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-port-moody" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-prince-george" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-prince-george" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-richmond" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-richmond" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-surrey" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-surrey" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-vancouver" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-vancouver" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-vernon" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-vernon" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-victoria" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-victoria" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-white-rock" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-white-rock" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-airdrie" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-airdrie" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-calgary" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-calgary" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-edmonton" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-edmonton" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-lethbridge" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-lethbridge" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-medicine-hat" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-medicine-hat" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-red-deer" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-red-deer" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-st-albert" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-st-albert" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+  <form name="lead-form-commercial-strathcona-county" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="lead-form-commercial-strathcona-county" />
+    <input type="text" name="full_name" />
+    <input type="text" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="file_type" />
+    <input type="text" name="obstacle" />
+    <input type="text" name="notes" />
+  </form>
+</body>
+</html>

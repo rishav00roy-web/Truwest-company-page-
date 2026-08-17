@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import SubPageHero from '@/components/sections/SubPageHero';
+import ContactSection from '@/components/interactive/ContactSection';
+import LeadQualificationWizard from '@/components/interactive/LeadQualificationWizard';
 import { BC_CITIES, AB_CITIES, formatCityName } from '@/data/locations';
 import { Metadata } from 'next';
 
@@ -35,11 +37,11 @@ export default function LocationsPage() {
               <h2 className="text-[32px] mb-8 font-serif">British Columbia</h2>
               
               <div className="mb-12">
-                <h3 className="text-[18px] text-[#856437] mb-4 font-mono tracking-wider uppercase">Residential Lending</h3>
+                <h3 className="text-[18px] text-bronze mb-4 font-mono tracking-wider uppercase">Residential Lending</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[16px]">
                   {BC_CITIES.map(city => (
                     <li key={city}>
-                      <Link href={`/mortgage-broker-${city}`} className="hover:text-[#856437] underline decoration-[#E8E5DE] underline-offset-4">
+                      <Link href={`/mortgage-broker-${city}`} className="hover:text-bronze underline decoration-line underline-offset-4">
                         {formatCityName(city)}
                       </Link>
                     </li>
@@ -48,11 +50,11 @@ export default function LocationsPage() {
               </div>
               
               <div>
-                <h3 className="text-[18px] text-[#856437] mb-4 font-mono tracking-wider uppercase">Commercial Lending</h3>
+                <h3 className="text-[18px] text-bronze mb-4 font-mono tracking-wider uppercase">Commercial Lending</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[16px]">
                   {BC_CITIES.map(city => (
                     <li key={`comm-${city}`}>
-                      <Link href={`/commercial-mortgage-broker-${city}`} className="hover:text-[#856437] underline decoration-[#E8E5DE] underline-offset-4">
+                      <Link href={`/commercial-mortgage-broker-${city}`} className="hover:text-bronze underline decoration-line underline-offset-4">
                         {formatCityName(city)}
                       </Link>
                     </li>
@@ -65,11 +67,11 @@ export default function LocationsPage() {
               <h2 className="text-[32px] mb-8 font-serif">Alberta</h2>
               
               <div className="mb-12">
-                <h3 className="text-[18px] text-[#856437] mb-4 font-mono tracking-wider uppercase">Residential Lending</h3>
+                <h3 className="text-[18px] text-bronze mb-4 font-mono tracking-wider uppercase">Residential Lending</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[16px]">
                   {AB_CITIES.map(city => (
                     <li key={city}>
-                      <Link href={`/mortgage-broker-${city}`} className="hover:text-[#856437] underline decoration-[#E8E5DE] underline-offset-4">
+                      <Link href={`/mortgage-broker-${city}`} className="hover:text-bronze underline decoration-line underline-offset-4">
                         {formatCityName(city)}
                       </Link>
                     </li>
@@ -78,11 +80,11 @@ export default function LocationsPage() {
               </div>
               
               <div>
-                <h3 className="text-[18px] text-[#856437] mb-4 font-mono tracking-wider uppercase">Commercial Lending</h3>
+                <h3 className="text-[18px] text-bronze mb-4 font-mono tracking-wider uppercase">Commercial Lending</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[16px]">
                   {AB_CITIES.map(city => (
                     <li key={`comm-${city}`}>
-                      <Link href={`/commercial-mortgage-broker-${city}`} className="hover:text-[#856437] underline decoration-[#E8E5DE] underline-offset-4">
+                      <Link href={`/commercial-mortgage-broker-${city}`} className="hover:text-bronze underline decoration-line underline-offset-4">
                         {formatCityName(city)}
                       </Link>
                     </li>
@@ -93,6 +95,10 @@ export default function LocationsPage() {
           </div>
         </div>
       </section>
+
+      <ContactSection>
+        <LeadQualificationWizard formName="lead-form" pageSource="locations" />
+      </ContactSection>
     </>
   );
 }
