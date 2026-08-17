@@ -23,11 +23,25 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+// og:image and twitter:image are emitted as absolute URLs built from metadataBase.
+// Hard-coding truwestmortgage.com there breaks previews while that domain is not
+// yet serving this site: scrapers fetch the card from a host that does not answer
+// and fall back to the favicon. So prefer whatever domain is actually serving this
+// deployment. Vercel sets VERCEL_PROJECT_PRODUCTION_URL to the production domain,
+// which becomes truwestmortgage.com by itself once that domain is attached to the
+// project, so this needs no follow-up edit at launch. NEXT_PUBLIC_SITE_URL is an
+// explicit override if it is ever needed.
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://truwestmortgage.com");
+
 // `openGraph.title` / `description` are deliberately omitted: Next falls back to
 // each page's own title and description, so shared links describe the page that
 // was actually shared rather than repeating a single site-wide blurb.
 export const metadata: Metadata = {
-  metadataBase: new URL("https://truwestmortgage.com"),
+  metadataBase: new URL(SITE_URL),
   title: "TruWest Mortgage | Mortgage Broker in BC & Alberta",
   description:
     "Independent mortgage brokerage for self-employed borrowers, first-time buyers, investors and commercial files across British Columbia and Alberta.",
@@ -35,7 +49,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "TruWest Mortgage",
     locale: "en_CA",
-    url: "https://truwestmortgage.com",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
