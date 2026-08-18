@@ -25,7 +25,10 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   if (!province) return {};
   const cityFormatted = formatCityName(city);
   return {
-    title: `Mortgage Broker ${cityFormatted} ${province.code} | First-Time Buyers & Self-Employed`,
+    // Kept under ~60 characters so it survives the SERP truncation point even for the
+    // longest city names in the list (New Westminster, Strathcona County). The audience
+    // terms this used to carry live in the description and the H1 instead.
+    title: `Mortgage Broker in ${cityFormatted}, ${province.code} | TruWest Mortgage`,
     description: `Local mortgage broker serving ${cityFormatted}, ${province.code}. Specializing in first-time buyers, self-employed mortgages, renewals and debt consolidation.`,
     alternates: {
       canonical: `https://truwestmortgage.com/mortgage-broker-${city}`

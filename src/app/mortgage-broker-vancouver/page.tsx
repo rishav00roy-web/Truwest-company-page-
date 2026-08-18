@@ -9,7 +9,7 @@ import LeadQualificationWizard from '@/components/interactive/LeadQualificationW
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mortgage Broker Vancouver, BC | Rates & Pre-Qualification | TruWest',
+  title: 'Mortgage Broker Vancouver, BC | TruWest Mortgage',
   description: 'Greater Vancouver mortgage broker structuring large loans and strata files around the federal stress test. Licensed since 2012.',
   alternates: {
     canonical: 'https://truwestmortgage.com/mortgage-broker-vancouver'

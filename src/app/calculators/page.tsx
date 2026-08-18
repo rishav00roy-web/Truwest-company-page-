@@ -7,7 +7,7 @@ import LeadQualificationWizard from '@/components/interactive/LeadQualificationW
 import MortgageCalculators from '@/components/interactive/MortgageCalculators';
 
 export const metadata: Metadata = {
-  title: 'Mortgage Calculators | Payment, Affordability & Closing Costs | TruWest Mortgage',
+  title: 'Mortgage Calculators for BC & Alberta | TruWest Mortgage',
   description: 'Run your own mortgage numbers: payment, affordability, BC property transfer tax and closing-cost calculators from TruWest Mortgage.',
   alternates: {
     canonical: 'https://truwestmortgage.com/calculators'

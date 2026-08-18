@@ -8,7 +8,7 @@ import LeadQualificationWizard from '@/components/interactive/LeadQualificationW
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mortgage Broker Surrey, BC | Rates & Pre-Qualification | TruWest',
+  title: 'Mortgage Broker Surrey, BC | TruWest Mortgage',
   description: 'Surrey mortgage broker structuring mortgage-helper suite income, multi-generational household income and self-employed files to qualify under B-20. Since 2012.',
   alternates: {
     canonical: 'https://truwestmortgage.com/mortgage-broker-surrey'

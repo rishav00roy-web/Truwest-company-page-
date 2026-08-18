@@ -9,7 +9,7 @@ import LeadQualificationWizard from '@/components/interactive/LeadQualificationW
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mortgage Broker Calgary, AB | Rates & Pre-Qualification | TruWest',
+  title: 'Mortgage Broker Calgary, AB | TruWest Mortgage',
   description: 'Calgary mortgage broker structuring energy-sector bonus, contract and self-employed income to qualify under B-20. Independent approvals since 2012.',
   alternates: {
     canonical: 'https://truwestmortgage.com/mortgage-broker-calgary'

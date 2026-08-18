@@ -8,8 +8,8 @@ import LeadQualificationWizard from '@/components/interactive/LeadQualificationW
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mortgage Broker British Columbia | Complex & Self-Employed Files | TruWest Mortgage',
-  description: 'Local BC mortgage broker structuring complex, self-employed and high-value files around the stress test and Property Transfer Tax province-wide. Licensed since 2012.',
+  title: 'Mortgage Broker British Columbia | TruWest Mortgage',
+  description: 'BC mortgage broker structuring complex, self-employed and high-value files around the stress test and Property Transfer Tax.',
   alternates: {
     canonical: 'https://truwestmortgage.com/mortgage-broker-british-columbia'
   }

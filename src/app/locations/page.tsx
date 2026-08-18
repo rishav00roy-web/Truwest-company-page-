@@ -4,6 +4,7 @@ import SubPageHero from '@/components/sections/SubPageHero';
 import ContactSection from '@/components/interactive/ContactSection';
 import LeadQualificationWizard from '@/components/interactive/LeadQualificationWizard';
 import { BC_CITIES, AB_CITIES, formatCityName } from '@/data/locations';
+import { CANONICAL_ORIGIN } from '@/data/site';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,8 +16,27 @@ export const metadata: Metadata = {
 };
 
 export default function LocationsPage() {
+  // This page's whole job is to be the hub that names every area served and points at
+  // its page. The ItemList says exactly that in the form a crawler reads, so the hub
+  // is understood as a set of served locations rather than a wall of anchor text.
+  // Nothing here is claimed that the page does not already show.
+  const areasJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Mortgage broker service areas in British Columbia and Alberta',
+    numberOfItems: BC_CITIES.length + AB_CITIES.length,
+    itemListElement: [...BC_CITIES, ...AB_CITIES].map((city, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: formatCityName(city),
+      url: `${CANONICAL_ORIGIN}/mortgage-broker-${city}`,
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(areasJsonLd) }} />
+
       <SubPageHero 
         breadcrumbs={[
           { label: 'Home', href: '/' },

@@ -8,8 +8,8 @@ import LeadQualificationWizard from '@/components/interactive/LeadQualificationW
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mortgage Broker Alberta | Variable & Self-Employed Income | TruWest Mortgage',
-  description: 'Local Alberta mortgage broker structuring variable, bonus, contract and self-employed income to qualify under B-20. No provincial land transfer tax. Licensed since 2012.',
+  title: 'Mortgage Broker Alberta | Self-Employed Income | TruWest',
+  description: 'Alberta mortgage broker structuring variable, bonus, contract and self-employed income to qualify under B-20. Licensed since 2012.',
   alternates: {
     canonical: 'https://truwestmortgage.com/mortgage-broker-alberta'
   }

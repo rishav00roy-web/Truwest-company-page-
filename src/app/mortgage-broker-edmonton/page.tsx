@@ -9,7 +9,7 @@ import LeadQualificationWizard from '@/components/interactive/LeadQualificationW
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mortgage Broker Edmonton, AB | Rates & Pre-Qualification | TruWest',
+  title: 'Mortgage Broker Edmonton, AB | TruWest Mortgage',
   description: 'Edmonton mortgage broker averaging overtime, shift premium and trades income to qualify under B-20. Public-sector and trades households since 2012.',
   alternates: {
     canonical: 'https://truwestmortgage.com/mortgage-broker-edmonton'
