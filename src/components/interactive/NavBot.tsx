@@ -249,6 +249,10 @@ export default function NavBot() {
             }}
             className="flex items-center gap-2 border-t border-line p-3 shrink-0"
           >
+            {/* 16px, not the 14.5px the rest of this panel uses: below 16px iOS Safari
+                zooms the whole page in on a focused input and does not zoom back out,
+                which strands the visitor mid-conversation at 1.4x with the layout
+                shifted sideways. */}
             <label htmlFor="navbot-input" className="sr-only">
               Ask a question about the site
             </label>
@@ -259,7 +263,7 @@ export default function NavBot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask where to find something…"
-              className="flex-1 min-w-0 bg-[#FAFAF7] border border-line px-3 py-2.5 text-[14.5px] text-ink outline-none focus:border-bronze transition-colors"
+              className="flex-1 min-w-0 bg-[#FAFAF7] border border-line px-3 py-2.5 text-[16px] text-ink outline-none focus:border-bronze transition-colors"
               maxLength={500}
               disabled={loading}
             />
