@@ -22,7 +22,7 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '40px 180px', // Large horizontal padding keeps text in the center 1:1 "safe zone"
+          padding: '40px 200px', // Extra padding
           fontFamily: 'serif',
         }}
       >
@@ -31,28 +31,28 @@ export default async function Image() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            marginBottom: '30px',
+            marginBottom: '20px',
           }}
         >
-          <div style={{ width: '30px', height: '2px', background: '#D9C19E', marginRight: '15px' }} />
+          <div style={{ width: '20px', height: '2px', background: '#D9C19E', marginRight: '15px' }} />
           <span
             style={{
               color: '#D9C19E',
-              fontSize: '18px',
+              fontSize: '16px',
               textTransform: 'uppercase',
-              letterSpacing: '0.25em',
+              letterSpacing: '0.2em',
               fontFamily: 'monospace',
             }}
           >
             TruWest Mortgage
           </span>
-          <div style={{ width: '30px', height: '2px', background: '#D9C19E', marginLeft: '15px' }} />
+          <div style={{ width: '20px', height: '2px', background: '#D9C19E', marginLeft: '15px' }} />
         </div>
 
         <div
           style={{
             color: '#ffffff',
-            fontSize: '64px',
+            fontSize: '48px', // Shrunk to 48px to guarantee it fits inside 600px width
             lineHeight: 1.2,
             fontWeight: 500,
             textAlign: 'center',
@@ -70,11 +70,11 @@ export default async function Image() {
         <div
           style={{
             color: '#B8B4AC',
-            fontSize: '24px',
-            marginTop: '40px',
+            fontSize: '20px',
+            marginTop: '30px',
             textAlign: 'center',
             fontFamily: 'sans-serif',
-            maxWidth: '600px',
+            maxWidth: '500px',
             lineHeight: 1.5,
           }}
         >
