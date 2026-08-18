@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image, { type StaticImageData } from 'next/image';
+import { CANONICAL_ORIGIN } from '@/data/site';
 
 interface SubPageHeroProps {
   breadcrumbs: { label: string; href?: string }[];
@@ -18,8 +19,25 @@ interface SubPageHeroProps {
 }
 
 export default function SubPageHero({ breadcrumbs, eyebrow, title, lede, ctaText, ctaHref, dataCta, image }: SubPageHeroProps) {
+  // The trail is already on the page for people; this is the same trail for search
+  // engines, which is what earns the breadcrumb line in a result instead of a bare
+  // URL. Unlike FAQ markup -- which Google stopped showing for sites like this one in
+  // 2023 -- breadcrumb rich results are still live. The final crumb carries no `item`,
+  // per schema.org: it is the page you are already on.
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((crumb, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: crumb.label,
+      ...(crumb.href ? { item: `${CANONICAL_ORIGIN}${crumb.href === '/' ? '' : crumb.href}` } : {}),
+    })),
+  };
+
   return (
     <header className="py-[96px] sm:py-[84px] bg-white border-b border-line">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <div className={`wrap ${image ? 'lg:grid lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:items-center' : ''}`}>
         <div>
           <nav aria-label="Breadcrumb" className="mb-8 font-mono text-[11px] uppercase tracking-[0.14em] text-stone">
