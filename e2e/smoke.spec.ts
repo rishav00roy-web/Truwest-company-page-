@@ -76,8 +76,16 @@ test.describe('mobile layout', () => {
     const wrapper = page.locator('button[aria-label="Open site assistant"]').locator('..');
     await expect(wrapper).toHaveCSS('opacity', '0');
 
-    await page.evaluate(() => window.scrollTo({ top: 900, behavior: 'instant' }));
-    await expect(wrapper).toHaveCSS('opacity', '1');
+    // The scroll is repeated on every poll rather than fired once. The listener that
+    // reveals the launcher is attached on hydration, and a single scroll dispatched
+    // before that lands is simply lost -- which is what made this flake under parallel
+    // load while passing every time in isolation.
+    await expect
+      .poll(async () => {
+        await page.evaluate(() => window.scrollTo({ top: 900, behavior: 'instant' }));
+        return wrapper.evaluate((el) => getComputedStyle(el).opacity);
+      }, { timeout: 10_000 })
+      .toBe('1');
   });
 });
 
