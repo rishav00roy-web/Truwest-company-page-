@@ -71,13 +71,21 @@ const ALLOWED_HOSTS = [
   "localhost:3000",
 ];
 
+// Vercel gives every branch and every build its own hostname, so a preview deployment
+// is never on the list above and the assistant answers 403 there -- which reads as the
+// chat being broken in exactly the place someone is checking whether it works. Scoped
+// to this project's own deployments rather than all of vercel.app, which would let any
+// page on the platform post here.
+const PREVIEW_HOST = /^truwest-company-page-[a-z0-9-]+\.vercel\.app$/;
+
 function isAllowedOrigin(req: NextRequest) {
   const origin = req.headers.get("origin");
   // Same-origin fetches from some browsers omit Origin entirely; allow those
   // through and let the rate limiter carry them.
   if (!origin) return true;
   try {
-    return ALLOWED_HOSTS.includes(new URL(origin).host);
+    const { host } = new URL(origin);
+    return ALLOWED_HOSTS.includes(host) || PREVIEW_HOST.test(host);
   } catch {
     return false;
   }

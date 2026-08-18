@@ -15,6 +15,16 @@ export const metadata: Metadata = {
   }
 };
 
+// These four lists are the whole point of the page, and on a phone they were 17px-tall
+// text links stacked 12px apart. That is under the 24x24 in WCAG 2.2 target size,
+// though the 29px between centres means they scrape past it on the spacing exception
+// rather than failing outright -- so this is a usability fix more than a compliance
+// one: 17px is well under the 44px both Apple and Android call a minimum touch target.
+// `inline-flex` with a minimum height grows the tappable box without moving the text
+// or losing the underline.
+const CITY_LINK =
+  'inline-flex items-center min-h-[44px] hover:text-bronze underline decoration-line underline-offset-4';
+
 export default function LocationsPage() {
   // This page's whole job is to be the hub that names every area served and points at
   // its page. The ItemList says exactly that in the form a crawler reads, so the hub
@@ -61,7 +71,7 @@ export default function LocationsPage() {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[16px]">
                   {BC_CITIES.map(city => (
                     <li key={city}>
-                      <Link href={`/mortgage-broker-${city}`} className="hover:text-bronze underline decoration-line underline-offset-4">
+                      <Link href={`/mortgage-broker-${city}`} className={CITY_LINK}>
                         {formatCityName(city)}
                       </Link>
                     </li>
@@ -74,7 +84,7 @@ export default function LocationsPage() {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[16px]">
                   {BC_CITIES.map(city => (
                     <li key={`comm-${city}`}>
-                      <Link href={`/commercial-mortgage-broker-${city}`} className="hover:text-bronze underline decoration-line underline-offset-4">
+                      <Link href={`/commercial-mortgage-broker-${city}`} className={CITY_LINK}>
                         {formatCityName(city)}
                       </Link>
                     </li>
@@ -91,7 +101,7 @@ export default function LocationsPage() {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[16px]">
                   {AB_CITIES.map(city => (
                     <li key={city}>
-                      <Link href={`/mortgage-broker-${city}`} className="hover:text-bronze underline decoration-line underline-offset-4">
+                      <Link href={`/mortgage-broker-${city}`} className={CITY_LINK}>
                         {formatCityName(city)}
                       </Link>
                     </li>
@@ -104,7 +114,7 @@ export default function LocationsPage() {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[16px]">
                   {AB_CITIES.map(city => (
                     <li key={`comm-${city}`}>
-                      <Link href={`/commercial-mortgage-broker-${city}`} className="hover:text-bronze underline decoration-line underline-offset-4">
+                      <Link href={`/commercial-mortgage-broker-${city}`} className={CITY_LINK}>
                         {formatCityName(city)}
                       </Link>
                     </li>
