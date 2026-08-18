@@ -30,6 +30,20 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
     // terms this used to carry live in the description and the H1 instead.
     title: `Mortgage Broker in ${cityFormatted}, ${province.code} | TruWest Mortgage`,
     description: `Local mortgage broker serving ${cityFormatted}, ${province.code}. Specializing in first-time buyers, self-employed mortgages, renewals and debt consolidation.`,
+    // These pages are one template with the city name substituted -- 92% of the lines on
+    // any two of them are byte-identical. Left in the index they compete with each other
+    // as near-duplicates and put thin-content weight on the whole site, so they are
+    // withheld from it until a page carries something genuinely local.
+    //
+    // `follow` is deliberate: the links out to the province page, the service pages and
+    // the contact form still count. The canonical stays self-referencing rather than
+    // pointing at the province page, because these are not duplicates *of* that page --
+    // canonical would be the wrong claim, and pairing it with noindex sends Google two
+    // instructions that contradict each other. One clear signal beats two muddled ones.
+    //
+    // To put a page back in the index, drop it from this rule once it has real local
+    // content: market conditions, lender behaviour, price bands for that city.
+    robots: { index: false, follow: true },
     alternates: {
       canonical: `https://truwestmortgage.com/mortgage-broker-${city}`
     }

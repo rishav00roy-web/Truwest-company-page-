@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { BC_CITIES, AB_CITIES } from '@/data/locations';
+import { DEDICATED_RESIDENTIAL_CITIES } from '@/data/locations';
 
 const BASE_URL = 'https://truwestmortgage.com';
 
@@ -16,19 +16,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/mortgage-broker-british-columbia`, changeFrequency: 'monthly', priority: 0.8 }
   ];
 
-  const cities = [...BC_CITIES, ...AB_CITIES];
-
-  const residentialCityPages: MetadataRoute.Sitemap = cities.map(city => ({
+  // Only the hand-written city pages belong here. The template-generated ones carry
+  // `robots: { index: false }` (see the two [city] routes), and a sitemap that
+  // advertises URLs the same site asks Google not to index is a contradiction that
+  // devalues the whole file. They stay linked from /locations, which is how a visitor
+  // reaches them and how their outbound links still count.
+  const residentialCityPages: MetadataRoute.Sitemap = DEDICATED_RESIDENTIAL_CITIES.map(city => ({
     url: `${BASE_URL}/mortgage-broker-${city}`,
     changeFrequency: 'monthly',
     priority: 0.7
   }));
 
-  const commercialCityPages: MetadataRoute.Sitemap = cities.map(city => ({
-    url: `${BASE_URL}/commercial-mortgage-broker-${city}`,
-    changeFrequency: 'monthly',
-    priority: 0.5
-  }));
-
-  return [...staticPages, ...residentialCityPages, ...commercialCityPages];
+  return [...staticPages, ...residentialCityPages];
 }
