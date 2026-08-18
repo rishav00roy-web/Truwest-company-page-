@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -54,6 +54,23 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  // iOS Safari otherwise finds bare digit strings in the copy (loan amounts, years,
+  // postal codes) and turns them into its own blue tel: links, which ignore this
+  // site's type and colour. The real phone numbers are explicit <a href="tel:">.
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+// `viewport-fit` is deliberately left at its default rather than `cover`: the layout
+// viewport then already excludes the notch and home-indicator areas on iOS, so nothing
+// on the page has to pay the safe-area insets back, and the full-bleed dark sections
+// still reach the screen edges in landscape. `themeColor` tints Safari's own toolbar to
+// the page's cream on iOS 15+ and macOS Safari, so the chrome stops fighting the page.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#F7F3EA",
 };
 
 // globals.css sets `scroll-behavior: smooth` for in-page anchor links. As of Next 16

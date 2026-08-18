@@ -7,8 +7,12 @@ const LINK_BASE =
   'font-sans text-[14px] font-medium whitespace-nowrap transition-colors text-white/65 hover:text-white';
 
 const CTA_HREF = 'https://cma.me/dilmohansingh-aneja/wizard?tid=bzlEG1fFfcn30EavNb2s';
+// No `display` utility here on purpose. Tailwind v4 emits `.inline-flex` after
+// `.hidden`, so a class list holding both resolves to inline-flex and `hidden`
+// silently does nothing -- which is what put this desktop-only CTA inside the
+// mobile island, overflowing it. Each call site adds its own display class.
 const CTA_CLASS =
-  'bg-white text-ink rounded-[9px] px-4 py-2 text-[13.5px] font-semibold tracking-[0.01em] hover:bg-bronze hover:text-white transition-colors inline-flex items-center justify-center min-h-[38px] whitespace-nowrap shrink-0';
+  'bg-white text-ink rounded-[9px] px-4 py-2 text-[13.5px] font-semibold tracking-[0.01em] hover:bg-bronze hover:text-white transition-colors items-center justify-center min-h-[38px] whitespace-nowrap shrink-0';
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
@@ -64,7 +68,7 @@ export default function Navbar() {
                 the CTA is rendered once, outside this list, pinned to the right. */}
             <li className="flex flex-col gap-4 w-full mt-2 lg:hidden">
               <a href="tel:+16045930197" className={LINK_BASE} onClick={close}>Call 604-593-0197</a>
-              <a href={CTA_HREF} target="_blank" rel="noopener noreferrer" className={CTA_CLASS} onClick={close}>
+              <a href={CTA_HREF} target="_blank" rel="noopener noreferrer" className={`${CTA_CLASS} inline-flex`} onClick={close}>
                 Apply Now
               </a>
             </li>

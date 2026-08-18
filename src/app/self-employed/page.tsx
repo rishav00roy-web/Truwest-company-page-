@@ -1,5 +1,6 @@
 import React from 'react';
 import SubPageHero from '@/components/sections/SubPageHero';
+import selfEmployedHero from '@public/images/self-employed-hero.jpg';
 import FlagshipSection from '@/components/sections/FlagshipSection';
 import ComparisonGrid from '@/components/sections/ComparisonGrid';
 import StepCardGrid from '@/components/sections/StepCardGrid';
@@ -56,7 +57,7 @@ export default function SelfEmployedPage() {
         ctaHref="#contact"
         dataCta="talk-to-dil"
         image={{
-          src: "/images/self-employed-hero.jpg",
+          src: selfEmployedHero,
           alt: "A self-employed potter standing in his own workshop, surrounded by finished work",
         }}
       />

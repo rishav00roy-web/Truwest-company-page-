@@ -1,16 +1,17 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { MOBILE_REVEAL_SCROLL_Y } from './revealThreshold';
 
 export default function MobileActionBar() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setShow(window.scrollY > 420);
+      setShow(window.scrollY > MOBILE_REVEAL_SCROLL_Y);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check initial state
 
     return () => window.removeEventListener('scroll', handleScroll);

@@ -1,5 +1,6 @@
 import React from 'react';
 import SubPageHero from '@/components/sections/SubPageHero';
+import commercialHero from '@public/images/commercial-hero.jpg';
 import SplitSection from '@/components/sections/SplitSection';
 import StepCardGrid from '@/components/sections/StepCardGrid';
 import FaqSection from '@/components/sections/FaqSection';
@@ -47,7 +48,7 @@ export default function CommercialInvestorsPage() {
         ctaHref="#contact"
         dataCta="commercial-file"
         image={{
-          src: "/images/commercial-hero.jpg",
+          src: commercialHero,
           alt: "A mid-rise building under construction at dusk beside city towers",
         }}
       />

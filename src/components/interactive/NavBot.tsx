@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { MOBILE_REVEAL_SCROLL_Y } from "./revealThreshold";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -27,9 +28,14 @@ const STARTERS = [
 // inside paths like "/self‑employed" — normalize those to ASCII "-" so the
 // link both matches this pattern and actually resolves to the real route.
 const HYPHEN_VARIANTS = /[‐‑‒–—−]/g;
-// Negative lookbehind keeps this from firing on slashes inside ordinary text
-// like "T1s/NOAs" or "and/or" — a route only ever starts at a word boundary.
-const LINK_PATTERN = /(?<![a-zA-Z0-9])(\/[a-zA-Z0-9\-/#‐‑‒–—−]+)/g;
+// A route only ever starts at a word boundary, so a slash sitting inside ordinary
+// text ("T1s/NOAs", "and/or") must not become a link. That rule is applied in code
+// rather than as a negative lookbehind in the pattern: JavaScriptCore only learned
+// lookbehind in Safari 16.4, and an unsupported lookbehind is a *parse* error, so on
+// iOS 15/16.0-16.3 and macOS Safari 15 it takes down this whole module -- and with it
+// the client bundle chunk it ships in -- rather than just degrading the link markup.
+const LINK_PATTERN = /\/[a-zA-Z0-9\-/#‐‑‒–—−]+/g;
+const WORD_CHAR = /[a-zA-Z0-9]/;
 
 // Matches the stroke/viewBox conventions used by the contact-section icons.
 const iconProps = {
@@ -44,18 +50,32 @@ const iconProps = {
 };
 
 function renderContent(content: string) {
-  const parts = content.split(LINK_PATTERN);
-  return parts.map((part, i) => {
-    if (i % 2 === 1) {
-      const href = part.replace(HYPHEN_VARIANTS, "-");
-      return (
-        <Link key={i} href={href} className="underline text-bronze hover:text-bronze-deep">
-          {href}
-        </Link>
-      );
+  const nodes: React.ReactNode[] = [];
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+
+  LINK_PATTERN.lastIndex = 0;
+  while ((match = LINK_PATTERN.exec(content)) !== null) {
+    // Stands in for the old negative lookbehind: a match glued to the end of a word
+    // is punctuation, not a path.
+    if (match.index > 0 && WORD_CHAR.test(content[match.index - 1])) continue;
+
+    if (match.index > cursor) {
+      nodes.push(<React.Fragment key={cursor}>{content.slice(cursor, match.index)}</React.Fragment>);
     }
-    return <React.Fragment key={i}>{part}</React.Fragment>;
-  });
+    const href = match[0].replace(HYPHEN_VARIANTS, "-");
+    nodes.push(
+      <Link key={match.index} href={href} className="underline text-bronze hover:text-bronze-deep">
+        {href}
+      </Link>
+    );
+    cursor = match.index + match[0].length;
+  }
+
+  if (cursor < content.length) {
+    nodes.push(<React.Fragment key={cursor}>{content.slice(cursor)}</React.Fragment>);
+  }
+  return nodes;
 }
 
 export default function NavBot() {
@@ -64,6 +84,12 @@ export default function NavBot() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  // On a phone the hero CTA sits low on the first screen, exactly where a launcher
+  // pinned bottom-right lands. So below md the launcher waits until the visitor has
+  // scrolled past the hero -- the same point the action bar appears -- and an open
+  // panel keeps it visible regardless. From md up the hero is wide enough that
+  // nothing collides and the launcher is always there.
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
@@ -71,6 +97,13 @@ export default function NavBot() {
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, open]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolledPastHero(window.scrollY > MOBILE_REVEAL_SCROLL_Y);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // deep-linked or restored scroll positions start past the threshold
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Opening a panel that you then have to click into is a small papercut; and a
   // panel you cannot dismiss from the keyboard is an accessibility one.
@@ -124,12 +157,24 @@ export default function NavBot() {
   );
 
   const showStarters = messages.length === 1 && !loading;
+  const revealed = open || scrolledPastHero;
 
   return (
-    <div className="fixed bottom-24 right-5 md:bottom-6 md:right-6 z-50 flex flex-col items-end">
+    // The mobile offset clears the 56px action bar plus the home-indicator inset, which
+    // `env(safe-area-inset-bottom)` adds on iPhones and leaves at 0 elsewhere.
+    // Faded rather than unmounted so the panel keeps its conversation across the
+    // threshold, and `pointer-events-none` keeps the invisible launcher untappable.
+    <div
+      className={`fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] right-5 md:bottom-6 md:right-6 z-50 flex flex-col items-end transition-opacity duration-300 motion-reduce:transition-none ${
+        revealed ? "opacity-100" : "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto"
+      }`}
+    >
       {open && (
+        // `chat-panel-h` (globals.css) measures against `svh` so the panel cannot grow
+        // past the top of the visible viewport on a phone, where `vh` over-reports by
+        // the height of the browser chrome, and falls back to `vh` on Safari < 15.4.
         <div
-          className="mb-3 w-[min(370px,calc(100vw-2.5rem))] h-[min(520px,72vh)] bg-white border border-line shadow-[0_18px_50px_rgba(22,22,22,0.22)] flex flex-col"
+          className="chat-panel-h mb-3 w-[min(370px,calc(100vw-2.5rem))] bg-white border border-line shadow-[0_18px_50px_rgba(22,22,22,0.22)] flex flex-col"
           role="dialog"
           aria-modal="false"
           aria-label="Ask TruWest, site assistant"
@@ -247,9 +292,10 @@ export default function NavBot() {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close site assistant" : "Open site assistant"}
         aria-expanded={open}
-        // Square, not a pill: every other surface on this site has hard corners,
-        // and a round floating bubble reads as a bolted-on third-party widget.
-        className="bg-ink text-white w-14 h-14 flex items-center justify-center shadow-[0_10px_30px_rgba(22,22,22,0.28)] hover:bg-bronze transition-colors"
+        // Round, unlike every other surface on this site: a floating assistant is not
+        // part of the page's own grid, and the circle is what marks it as an overlay
+        // rather than a block someone forgot to align.
+        className="bg-ink text-white rounded-full w-14 h-14 flex items-center justify-center shadow-[0_10px_30px_rgba(22,22,22,0.28)] hover:bg-bronze transition-colors"
       >
         {open ? (
           <svg {...iconProps} width="22" height="22">
@@ -257,7 +303,7 @@ export default function NavBot() {
           </svg>
         ) : (
           <svg {...iconProps} width="22" height="22">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
           </svg>
         )}
       </button>

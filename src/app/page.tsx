@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import dilmohanPortrait from '@public/images/dilmohan-aneja.jpg';
 import FlagshipSection from '@/components/sections/FlagshipSection';
 import ComparisonGrid from '@/components/sections/ComparisonGrid';
 import Pullquote from '@/components/sections/Pullquote';
@@ -49,9 +50,14 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Editorial Hero */}
-      <header className="relative bg-white text-ink min-h-[90vh] flex flex-col justify-center items-center px-6 pt-32 pb-48 overflow-hidden border-b border-line" id="top">
-        <div className="max-w-[1140px] w-full mx-auto relative z-10 flex flex-col items-center text-center">
-          <div className="mb-12 flex items-center justify-center gap-4">
+      {/* `hero-min-h` (globals.css) is 80svh with a vh fallback: mobile browsers resolve
+          `vh` against the viewport with the URL bar retracted, so a `vh` hero is always
+          taller than what the visitor can actually see on first paint. Horizontal padding
+          lives on the inner wrapper, not the header, so the stat bar below can run edge
+          to edge in both its in-flow (mobile) and pinned (md+) positions. */}
+      <header className="hero-min-h relative bg-white text-ink flex flex-col justify-center items-center pt-28 md:pt-32 pb-0 md:pb-48 overflow-hidden border-b border-line" id="top">
+        <div className="max-w-[1140px] w-full mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+          <div className="mb-8 md:mb-12 flex items-center justify-center gap-4">
             <span className="w-8 h-[1px] bg-bronze"></span>
             <span className="font-mono text-xs tracking-[0.22em] uppercase text-bronze">
               TruWest Mortgage
@@ -59,12 +65,12 @@ export default function Home() {
             <span className="w-8 h-[1px] bg-bronze"></span>
           </div>
           
-          <h1 className="font-serif font-medium text-[clamp(48px,8vw,96px)] leading-[1.05] tracking-[-0.01em] text-ink max-w-[900px] mb-8">
+          <h1 className="font-serif font-medium text-[clamp(48px,8vw,96px)] leading-[1.05] tracking-[-0.01em] text-ink max-w-[900px] mb-6 md:mb-8">
             Banks read tax returns.<br/>
             <span className="text-bronze italic">We read businesses.</span>
           </h1>
           
-          <p className="font-sans text-xl leading-relaxed text-stone max-w-[600px] mb-12">
+          <p className="font-sans text-xl leading-relaxed text-stone max-w-[600px] mb-10 md:mb-12">
             Bespoke mortgage strategy for self-employed borrowers, investors, and complex financial situations. Get direct access to an experienced broker.
           </p>
           
@@ -75,7 +81,11 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="absolute bottom-0 left-0 w-full bg-white border-t border-line">
+        {/* Pinned to the bottom of the hero from md up, where it is a single 234px-tall
+            row that `pb-48` reserves room for. Below md it wraps to two rows and no
+            longer fits that reservation, so it sits in normal flow instead of being
+            absolutely positioned on top of the CTA. */}
+        <div className="w-full mt-12 md:mt-0 md:absolute md:bottom-0 md:left-0 bg-white border-t border-line">
           <div className="max-w-[1140px] mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center divide-x-0 md:divide-x divide-line">
             <div className="flex flex-col">
               <span className="font-serif text-4xl text-emerald mb-1">14+</span>
@@ -354,11 +364,13 @@ export default function Home() {
                 <p className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-bronze-dark-bg mt-2.5">Managing Director &amp; Principal Broker</p>
               </div>
               <div className="reveal-card__face bg-[#F2EFE8] overflow-hidden">
+                {/* Static import so the build can measure the file and inline a blur
+                    preview; the portrait is far below the fold and therefore lazy, which
+                    is exactly the case where an empty frame is visible while it loads. */}
                 <Image
-                  src="/images/dilmohan-aneja.jpg"
+                  src={dilmohanPortrait}
                   alt="Dilmohan Aneja"
-                  width={960}
-                  height={1200}
+                  placeholder="blur"
                   sizes="(min-width: 1140px) 460px, (min-width: 768px) 42vw, 320px"
                   className="w-full h-full object-cover object-center"
                 />

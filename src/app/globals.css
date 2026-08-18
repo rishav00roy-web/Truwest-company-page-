@@ -54,6 +54,10 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 90px;
+    /* iOS Safari inflates text in landscape unless this is pinned. Tailwind's preflight
+       already sets it; repeated here so a preflight change cannot silently undo it. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
   
   body {
@@ -78,6 +82,42 @@
     margin-right: auto;
     padding-left: 24px;
     padding-right: 24px;
+  }
+}
+
+/*
+  Viewport-height sizing, written by hand rather than as Tailwind arbitrary values,
+  for two reasons: the `vh` fallback and the `svh` upgrade are the same property, so
+  they cannot be two utility classes on one element without depending on the order
+  Tailwind happens to emit them in; and Safari only shipped `svh` in 15.4, so the
+  pre-15.4 iPhones and Macs need a declaration they can actually parse.
+
+  `svh` is the small viewport: the height left over with the browser's own chrome
+  showing. `vh` on a phone means the height with that chrome retracted, so a `vh` box
+  is always taller than what the visitor can see when the page first paints.
+*/
+.hero-min-h {
+  min-height: 80vh;
+}
+
+.chat-panel-h {
+  height: min(520px, 72vh);
+}
+
+@supports (height: 1svh) {
+  .hero-min-h {
+    min-height: 80svh;
+  }
+
+  /* 11rem covers the launcher's own bottom offset, its 56px square and the gap. */
+  .chat-panel-h {
+    height: min(520px, calc(100svh - 11rem));
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero-min-h {
+    min-height: 90vh;
   }
 }
 

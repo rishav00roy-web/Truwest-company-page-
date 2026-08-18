@@ -1,5 +1,6 @@
 import React from 'react';
 import SubPageHero from '@/components/sections/SubPageHero';
+import firstTimeBuyersHero from '@public/images/first-time-buyers-hero.jpg';
 import SplitSection from '@/components/sections/SplitSection';
 import StepCardGrid from '@/components/sections/StepCardGrid';
 import FlagshipSection from '@/components/sections/FlagshipSection';
@@ -50,7 +51,7 @@ export default function HomeBuyersPage() {
         ctaHref="#contact"
         dataCta="talk-to-dil"
         image={{
-          src: "/images/first-time-buyers-hero.jpg",
+          src: firstTimeBuyersHero,
           alt: "A couple carrying moving boxes and house keys into their new home",
         }}
       />

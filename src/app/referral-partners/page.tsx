@@ -1,5 +1,6 @@
 import React from 'react';
 import SubPageHero from '@/components/sections/SubPageHero';
+import partnersHero from '@public/images/partners-hero.jpg';
 import SplitSection from '@/components/sections/SplitSection';
 import StepCardGrid from '@/components/sections/StepCardGrid';
 import ComparisonGrid from '@/components/sections/ComparisonGrid';
@@ -41,7 +42,7 @@ export default function ReferralPartnersPage() {
         ctaHref="#contact"
         dataCta="partner-scenario"
         image={{
-          src: "/images/partners-hero.jpg",
+          src: partnersHero,
           alt: "A real estate agent reviewing paperwork with a couple inside a home",
         }}
       />

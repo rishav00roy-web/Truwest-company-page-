@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 
 interface SubPageHeroProps {
   breadcrumbs: { label: string; href?: string }[];
@@ -12,7 +12,9 @@ interface SubPageHeroProps {
   dataCta?: string;
   // Optional supporting photo. When present the hero becomes an asymmetric
   // split (copy left, image right) from lg up, and stacks on smaller screens.
-  image?: { src: string; alt: string };
+  // Typed as a static import rather than a URL string on purpose: only a static
+  // import gives the build the dimensions and the blur placeholder below.
+  image?: { src: StaticImageData; alt: string };
 }
 
 export default function SubPageHero({ breadcrumbs, eyebrow, title, lede, ctaText, ctaHref, dataCta, image }: SubPageHeroProps) {
@@ -45,11 +47,17 @@ export default function SubPageHero({ breadcrumbs, eyebrow, title, lede, ctaText
             image is the LCP element on the pages that use it. */}
         {image && (
           <div className="relative mt-12 lg:mt-0 aspect-[3/2] w-full overflow-hidden border border-line">
+            {/* `placeholder="blur"` inlines a tiny base64 preview in the HTML, so the
+                frame is filled from the first paint instead of sitting empty until the
+                full image lands. On a phone `sizes` resolves to 100vw, which on a 3x
+                screen asks for the 1920px variant -- the largest request on the page,
+                and the one whose arrival used to read as "the picture loaded late". */}
             <Image
               src={image.src}
               alt={image.alt}
               fill
               priority
+              placeholder="blur"
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
             />
