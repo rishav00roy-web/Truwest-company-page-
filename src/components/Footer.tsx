@@ -49,7 +49,6 @@ export default function Footer() {
             <span className="block mb-[28px] text-[#6E6A63] font-mono text-[11.5px] tracking-[0.2em] uppercase">Company</span>
             <ul className="flex flex-col gap-[16px] text-[14.5px] font-sans text-[#EDEBE6]">
               <li><Link href="/referral-partners" className="hover:text-bronze transition-colors duration-300">Referral Partners</Link></li>
-              <li><a href="https://velocity.newton.ca/sso/public.php?sc=136pf7uo80xqk" target="_blank" rel="noopener noreferrer" className="hover:text-bronze transition-colors duration-300">Apply Online</a></li>
               <li><a href="https://share.google/paWEQpy3IslpiACOP" target="_blank" rel="noopener noreferrer" className="hover:text-bronze transition-colors duration-300">View TruWest on Google</a></li>
               <li><Link href="#contact" className="hover:text-bronze transition-colors duration-300">Talk to Dil</Link></li>
             </ul>
@@ -64,8 +63,8 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex gap-[24px] font-mono text-[11px] tracking-[0.1em] uppercase">
-            <button type="button" className="hover:text-white cursor-pointer transition-colors duration-300">Privacy Policy</button>
-            <button type="button" className="hover:text-white cursor-pointer transition-colors duration-300">Terms of Use</button>
+            <Link href="/privacy" className="hover:text-white transition-colors duration-300">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors duration-300">Terms of Use</Link>
           </div>
         </div>
       </div>

@@ -89,20 +89,12 @@ const contactRows = [
       </svg>
     )
   },
-  {
-    label: 'Apply Online',
-    href: 'https://velocity.newton.ca/sso/public.php?sc=136pf7uo80xqk',
-    external: true,
-    value: 'Start a Mortgage Application →',
-    icon: (
-      <svg {...iconProps}>
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
-        <path d="M14 2v6h6" />
-        <path d="M16 13H8" />
-        <path d="M16 17H8" />
-      </svg>
-    )
-  }
+  // An "Apply Online" channel pointing at velocity.newton.ca sat here. That host stopped
+  // resolving -- 21 seconds to a connection failure, browser user-agent, retried -- so it
+  // was sending people to a dead page from the contact block on nearly every page. It was
+  // also a second application destination competing with the Canadian Mortgage App link
+  // behind every "Apply Now" button, which splits the funnel for no gain. Removed pending
+  // confirmation of which platform is current; restoring it is one entry in this list.
 ];
 
 export default function ContactSection({ children, note }: ContactSectionProps) {

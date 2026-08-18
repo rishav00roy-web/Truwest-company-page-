@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/referral-partners`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/calculators`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/locations`, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE_URL}/privacy`, changeFrequency: 'yearly', priority: 0.2 },
+    { url: `${BASE_URL}/terms`, changeFrequency: 'yearly', priority: 0.2 },
     { url: `${BASE_URL}/mortgage-broker-alberta`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE_URL}/mortgage-broker-british-columbia`, changeFrequency: 'monthly', priority: 0.8 }
   ];
