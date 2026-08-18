@@ -14,6 +14,22 @@ import { NextResponse, type NextRequest } from 'next/server';
  * Query strings and hashes are untouched: `nextUrl.clone()` carries the search params,
  * and the hash never reaches the server in the first place.
  */
+/**
+ * Every page declares its canonical on truwestmortgage.com, and the sitemap lists that
+ * host too. Until that domain is attached, the deployment answers on a vercel.app
+ * address that is fully crawlable -- so a crawler can index the staging copy while its
+ * canonical points at a host that serves nothing.
+ *
+ * Matching on the vercel.app suffix rather than on an allowlist of "real" domains is
+ * deliberate: an allowlist that falls out of date would noindex production itself,
+ * which is the one mistake here that is expensive and slow to notice. A vercel.app
+ * host is never the domain this site is meant to rank on.
+ */
+function isPreviewHost(request: NextRequest) {
+  const host = request.headers.get('host') ?? '';
+  return host.endsWith('.vercel.app');
+}
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const lowercased = pathname.toLowerCase();
@@ -24,7 +40,13 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 308);
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+
+  if (isPreviewHost(request)) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+
+  return response;
 }
 
 export const config = {
