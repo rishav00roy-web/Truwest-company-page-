@@ -22,7 +22,7 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '80px',
+          padding: '40px 180px', // Large horizontal padding keeps text in the center 1:1 "safe zone"
           fontFamily: 'serif',
         }}
       >
@@ -31,14 +31,14 @@ export default async function Image() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            marginBottom: '40px',
+            marginBottom: '30px',
           }}
         >
-          <div style={{ width: '40px', height: '2px', background: '#D9C19E', marginRight: '20px' }} />
+          <div style={{ width: '30px', height: '2px', background: '#D9C19E', marginRight: '15px' }} />
           <span
             style={{
               color: '#D9C19E',
-              fontSize: '24px',
+              fontSize: '18px',
               textTransform: 'uppercase',
               letterSpacing: '0.25em',
               fontFamily: 'monospace',
@@ -46,14 +46,14 @@ export default async function Image() {
           >
             TruWest Mortgage
           </span>
-          <div style={{ width: '40px', height: '2px', background: '#D9C19E', marginLeft: '20px' }} />
+          <div style={{ width: '30px', height: '2px', background: '#D9C19E', marginLeft: '15px' }} />
         </div>
 
         <div
           style={{
             color: '#ffffff',
-            fontSize: '84px',
-            lineHeight: 1.1,
+            fontSize: '64px',
+            lineHeight: 1.2,
             fontWeight: 500,
             textAlign: 'center',
             display: 'flex',
@@ -62,7 +62,7 @@ export default async function Image() {
           }}
         >
           <span>Banks read tax returns.</span>
-          <span style={{ color: '#D9C19E', fontStyle: 'italic', marginTop: '20px' }}>
+          <span style={{ color: '#D9C19E', fontStyle: 'italic', marginTop: '10px' }}>
             We read businesses.
           </span>
         </div>
@@ -70,11 +70,11 @@ export default async function Image() {
         <div
           style={{
             color: '#B8B4AC',
-            fontSize: '32px',
-            marginTop: '60px',
+            fontSize: '24px',
+            marginTop: '40px',
             textAlign: 'center',
             fontFamily: 'sans-serif',
-            maxWidth: '800px',
+            maxWidth: '600px',
             lineHeight: 1.5,
           }}
         >
